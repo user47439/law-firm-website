@@ -122,6 +122,18 @@ section + section { border-top: 1px solid var(--line); }
 .award { margin-top: 8px; padding: 18px 20px; background: var(--surface); border-left: 2px solid var(--accent); font-size: .95rem; color: var(--muted); }
 @media (max-width: 800px) { .intro { grid-template-columns: 1fr; } }
 
+section.has-banner { padding-top: 0; }
+.banner {
+  margin-bottom: clamp(48px, 7vw, 80px);
+  color: var(--on-navy);
+  background:
+    linear-gradient(180deg, rgba(20,35,60,.15), rgba(20,35,60,.65)),
+    url("images/dienstleistungen.webp") center 40% / cover no-repeat,
+    var(--navy);
+}
+.banner .wrap { min-height: clamp(260px, 36vw, 440px); display: flex; flex-direction: column; justify-content: flex-end; gap: 10px; padding-block: 40px; text-shadow: 0 2px 16px rgba(10,18,32,.6); }
+.banner .eyebrow { color: #e3c999; }
+.banner h2 { font-size: clamp(2.4rem, 5vw, 3.6rem); }
 .areas { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0; border-top: 1px solid var(--line); }
 .areas article { padding: 26px 24px 28px 0; border-bottom: 1px solid var(--line); display: grid; gap: 8px; align-content: start; }
 .areas p { color: var(--muted); font-size: .95rem; }
@@ -223,12 +235,14 @@ section + section { border-top: 1px solid var(--line); }
     </div>
   </section>
 
-  <section id="dienstleistungen">
-    <div class="wrap">
-      <div class="head">
+  <section id="dienstleistungen" class="has-banner">
+    <div class="banner">
+      <div class="wrap">
         <span class="eyebrow">Dienstleistungen</span>
         <h2>Rechtsgebiete</h2>
       </div>
+    </div>
+    <div class="wrap">
       <div class="areas">
         <article><h3>Gesellschaftsrecht</h3><p>Gründungen, Kapitalerhöhungen, Aktionärbindungsverträge, Nachfolgeregelungen und Umstrukturierungen.</p></article>
         <article><h3>Vertragsrecht</h3><p>Ausarbeitung und Prüfung von Verträgen, AGB und Kooperationen im In- und Ausland.</p></article>
