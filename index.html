@@ -138,6 +138,12 @@ section.has-banner { padding-top: 0; }
 .areas article { padding: 26px 24px 28px 0; border-bottom: 1px solid var(--line); display: grid; gap: 8px; align-content: start; }
 .areas p { color: var(--muted); font-size: .95rem; }
 
+.photo { margin: 0; }
+.photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.intro .photo { margin-top: 32px; }
+.notary .photo { margin-top: 28px; }
+.notary .photo img { aspect-ratio: 16 / 10; }
+
 .alt { background: var(--surface); }
 .notary { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 88px); align-items: start; }
 .checklist { list-style: none; margin: 0; padding: 0; display: grid; }
@@ -152,7 +158,12 @@ section.has-banner { padding-top: 0; }
   background: linear-gradient(160deg, var(--navy-2), var(--navy));
   display: grid; place-items: center;
   color: var(--on-navy); font-family: var(--display); font-size: 3rem; letter-spacing: .06em;
+  overflow: hidden;
 }
+/* To add a portrait, put <img src="images/team/name.jpg" alt=""> inside .portrait;
+   it covers the initials. Without an image, the initials stay visible. */
+.portrait { position: relative; }
+.portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
 .person .role { color: var(--accent); font-size: .85rem; font-weight: 600; }
 .person .focus { color: var(--muted); font-size: .92rem; }
 
@@ -164,7 +175,15 @@ section.has-banner { padding-top: 0; }
 .members { display: flex; flex-wrap: wrap; gap: 12px; }
 .members span { border: 1px solid var(--line); padding: 10px 16px; font-size: .92rem; color: var(--muted); }
 
-.contact { background: var(--navy); color: var(--on-navy); }
+.contact {
+  color: var(--on-navy);
+  background:
+    linear-gradient(180deg, rgba(20,35,60,.88), rgba(20,35,60,.94)),
+    url("images/kontakt.jpg") center 60% / cover no-repeat,
+    var(--navy);
+}
+.credits { font-size: .75rem; }
+.credits a { border-bottom: 1px solid rgba(238,241,246,.25); }
 .contact .eyebrow { color: #c8a776; }
 .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 36px; margin-top: 8px; }
 .contact-grid h3 { font-size: 1.2rem; margin-bottom: 8px; }
@@ -216,6 +235,7 @@ section.has-banner { padding-top: 0; }
       <div class="head">
         <span class="eyebrow">Die Kanzlei</span>
         <p class="lead">Muster &amp; Partner ist eine Anwalts- und Notariatskanzlei mit erfahrenen, spezialisierten Partnerinnen und Partnern.</p>
+        <figure class="photo"><img src="images/kanzlei.jpg" alt="Gestapelte, ledergebundene Bücher auf einem Holztisch" width="1400" height="933" loading="lazy"></figure>
       </div>
       <div class="principles">
         <article>
@@ -266,6 +286,7 @@ section.has-banner { padding-top: 0; }
           <p>Unsere Notarinnen und Notare beurkunden Rechtsgeschäfte und beglaubigen Unterschriften und Kopien. Vereinbaren Sie einen Termin, wir bereiten die Urkunden vorgängig vor.</p>
           <p>Bitte bringen Sie zum Termin einen gültigen Pass oder eine Identitätskarte mit.</p>
         </div>
+        <figure class="photo"><img src="images/beurkundungen.jpg" alt="Vertrag mit Unterschriftsfeldern und Füllfederhalter" width="1400" height="1050" loading="lazy"></figure>
       </div>
       <ul class="checklist">
         <li><span>Gründungen und Statutenänderungen</span><span>AG, GmbH</span></li>
@@ -335,6 +356,9 @@ section.has-banner { padding-top: 0; }
   <div class="wrap">
     <span>© <span id="year">2026</span> Muster &amp; Partner Rechtsanwälte AG</span>
     <nav aria-label="Rechtliches"><a href="#kontakt">Impressum</a><a href="#kontakt">Datenschutz</a></nav>
+    <p class="credits">Bilder: <a href="https://commons.wikimedia.org/wiki/File:Leather_bound_books_(Unsplash).jpg">Bücher</a> (CC0) ·
+      <a href="https://commons.wikimedia.org/wiki/File:Legal_Contract_%26_Signature_-_Warm_Tones.jpg">Vertrag</a>, Blogtrepreneur, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a> ·
+      <a href="https://commons.wikimedia.org/wiki/File:Limmat_und_Altstadt_Z%C3%BCrich_an_einem_Winterabend.jpg">Zürich</a>, Barbara Steinemann, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></p>
   </div>
 </footer>
 
