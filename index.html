@@ -98,22 +98,11 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .hero {
   position: relative; overflow: hidden; color: var(--on-navy);
   background:
-    radial-gradient(ellipse 60% 70% at 50% 0%, rgba(255,255,255,.22), transparent 70%),
-    linear-gradient(180deg, var(--navy-2), var(--navy));
+    linear-gradient(180deg, rgba(20,35,60,.45), rgba(20,35,60,.55)),
+    url("images/hero.webp") center 35% / cover no-repeat,
+    var(--navy);
 }
-.hero::before {
-  /* fluted columns */
-  content: ""; position: absolute; inset: 0;
-  background:
-    repeating-linear-gradient(90deg,
-      transparent 0 6%,
-      rgba(255,255,255,.05) 6% 7%, rgba(255,255,255,.12) 7% 8%, rgba(255,255,255,.04) 8% 9%,
-      rgba(255,255,255,.12) 9% 10%, rgba(255,255,255,.05) 10% 11%,
-      transparent 11% 25%);
-  -webkit-mask-image: linear-gradient(180deg, #000 40%, transparent);
-          mask-image: linear-gradient(180deg, #000 40%, transparent);
-}
-.hero .wrap { position: relative; padding-block: clamp(80px, 13vw, 150px); text-align: center; }
+.hero .wrap { position: relative; padding-block: clamp(110px, 16vw, 200px); text-align: center; text-shadow: 0 2px 18px rgba(10,18,32,.55); }
 .hero blockquote { margin: 0 auto; max-width: 30ch; }
 .hero blockquote p { font-family: var(--display); font-style: italic; font-weight: 500; font-size: clamp(1.9rem, 4.6vw, 3.1rem); line-height: 1.2; text-wrap: balance; }
 .hero .latin { display: block; font-size: .95rem; letter-spacing: .12em; text-transform: uppercase; opacity: .7; margin-bottom: 18px; font-style: normal; font-family: var(--body); }
