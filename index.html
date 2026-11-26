@@ -12,14 +12,16 @@
 <style>
 /* Layout: sticky masthead, quote hero over a fluted-column motif, then calm single-column sections on a narrow measure with wide grids for services and team. */
 :root {
-  --navy: #14233c;
-  --navy-2: #1d3152;
+  --navy: #002843;
+  --navy-2: #0b3a5c;
   --bg: #fbfbf9;
   --surface: #f1f2f0;
   --fg: #1b2230;
   --muted: #5b6474;
   --line: #d9dcdf;
   --accent: #9a7b4f;
+  --gold: #c8a776;
+  --card: #ffffff;
   --on-navy: #eef1f6;
   --display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
   --body: "Figtree", "Helvetica Neue", Arial, sans-serif;
@@ -29,12 +31,12 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0f1724; --surface: #162133; --fg: #e6e9ef; --muted: #9aa4b4;
-    --line: #2a3850; --accent: #c8a776; color-scheme: dark;
+    --line: #2a3850; --accent: #c8a776; --card: #142035; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #0f1724; --surface: #162133; --fg: #e6e9ef; --muted: #9aa4b4;
-  --line: #2a3850; --accent: #c8a776; color-scheme: dark;
+  --line: #2a3850; --accent: #c8a776; --card: #142035; color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
@@ -210,6 +212,47 @@ section.has-banner { padding-top: 0; }
 .members a:hover { color: var(--fg); border-color: var(--accent); }
 .hero blockquote { max-width: 34ch; }
 .hero blockquote p { font-size: clamp(1.6rem, 3.6vw, 2.6rem); }
+
+/* Redesign refinements */
+.hero { background:
+    linear-gradient(90deg, rgba(0,26,46,.88) 0%, rgba(0,26,46,.62) 45%, rgba(0,26,46,.15) 100%),
+    url("images/hero.webp") center 35% / cover no-repeat, var(--navy); }
+.hero .wrap { text-align: left; display: grid; gap: 22px; justify-items: start; padding-block: clamp(72px, 9vw, 120px); }
+.hero .eyebrow { color: var(--gold); }
+.hero blockquote { margin: 0; max-width: 46ch; padding-left: 24px; border-left: 2px solid var(--gold); }
+.hero blockquote p { font-size: clamp(1.5rem, 2.8vw, 2.2rem); line-height: 1.25; text-wrap: pretty; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.btn { display: inline-block; padding: 13px 22px; font: 600 .9rem var(--body); letter-spacing: .02em; text-decoration: none; text-shadow: none; transition: background .2s, color .2s, border-color .2s; }
+.btn-primary { background: var(--gold); color: #1a1408; }
+.btn-primary:hover { background: #d8bb8e; }
+.btn-ghost { border: 1px solid rgba(238,241,246,.5); color: var(--on-navy); }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+.facts { background: var(--navy); color: var(--on-navy); }
+.facts dl { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.facts dl > div { padding: 26px 24px 26px 0; display: grid; gap: 4px; border-top: 1px solid rgba(255,255,255,.12); }
+.facts dt { font-family: var(--display); font-size: 2.4rem; line-height: 1; color: var(--gold); }
+.facts dd { margin: 0; font-size: .88rem; color: rgba(238,241,246,.75); max-width: 24ch; }
+.facts + section { border-top: 0; }
+
+.areas { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; border-top: 0; }
+.areas article { background: var(--card); border: 1px solid var(--line); border-top: 2px solid transparent; padding: 24px 24px 26px; transition: border-color .2s, transform .2s; }
+.areas article:hover { border-top-color: var(--accent); transform: translateY(-2px); }
+.areas h3 { font-size: 1.35rem; }
+#dienstleistungen { background: var(--surface); }
+#dienstleistungen + .alt { background: var(--bg); }
+
+.team-label { font-family: var(--body); font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.team-partners { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); margin-bottom: 64px; }
+.team-staff { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 32px 22px; }
+@media (min-width: 960px) { .team-staff { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.team-staff h3 { font-size: 1.2rem; }
+.portrait { margin-bottom: 14px; }
+.portrait img { transition: transform .4s ease; }
+.person:hover .portrait img { transform: scale(1.03); }
+
+.contact-grid .phone .big { display: inline-block; font-family: var(--display); font-size: 1.8rem; line-height: 1.2; color: var(--gold); border: 0; margin-bottom: 6px; }
+@media (prefers-reduced-motion: reduce) { .areas article, .portrait img, .btn { transition: none; } .areas article:hover { transform: none; } }
 </style>
 </head>
 <body>
@@ -233,12 +276,28 @@ section.has-banner { padding-top: 0; }
 <main id="top">
   <section class="hero" aria-label="Leitgedanke">
     <div class="wrap">
+      <span class="eyebrow">Anwälte und Notare in Zug, Zürich und Schwyz</span>
       <blockquote>
         <p>«Wenn du im Recht bist, kannst du es dir leisten, die Ruhe zu bewahren; und wenn du im Unrecht bist, kannst du es dir nicht leisten, sie zu verlieren.»</p>
         <cite>Mahatma Gandhi (1869 – 1948)</cite>
       </blockquote>
+      <div class="cta">
+        <a class="btn btn-primary" href="#kontakt">Kontakt aufnehmen</a>
+        <a class="btn btn-ghost" href="#dienstleistungen">Unsere Dienstleistungen</a>
+      </div>
     </div>
   </section>
+
+  <div class="facts" aria-label="Kanzlei in Zahlen">
+    <div class="wrap">
+      <dl>
+        <div><dt>3</dt><dd>Standorte: Baar, Regensdorf, Immensee</dd></div>
+        <div><dt>11</dt><dd>Rechtsgebiete in Beratung und Prozess</dd></div>
+        <div><dt>4</dt><dd>Urkundspersonen der Kantone Zug und Schwyz</dd></div>
+        <div><dt>Top</dt><dd>Anwaltskanzlei laut Bilanz und PME, 2026</dd></div>
+      </dl>
+    </div>
+  </div>
 
   <section id="kanzlei">
     <div class="wrap intro">
@@ -325,11 +384,15 @@ section.has-banner { padding-top: 0; }
       </div>
     </div>
     <div class="wrap">
-      <div class="team">
+      <h3 class="team-label">Partnerinnen und Partner</h3>
+      <div class="team team-partners">
         <article class="person"><div class="portrait"><img src="images/team/zanetti.jpg" alt="Gianni F. Zanetti" loading="lazy"></div><h3>Gianni F. Zanetti</h3><span class="role">Managing Partner</span><span class="focus">lic. iur., Rechtsanwalt, Fachanwalt SAV Arbeitsrecht, CAS Finanz- und Rechnungswesen für Juristen, CAS Prozessführung – Civil Litigation</span></article>
         <article class="person"><div class="portrait"><img src="images/team/kammerbauer.jpg" alt="Sandra M. Kammerbauer" loading="lazy"></div><h3>Sandra M. Kammerbauer</h3><span class="role">Partnerin</span><span class="focus">MLaw, Rechtsanwältin und Urkundsperson des Kantons Zug, Fachanwältin SAV Arbeitsrecht</span></article>
         <article class="person"><div class="portrait"><img src="images/team/locher.jpg" alt="Thomas Locher" loading="lazy"></div><h3>Thomas Locher</h3><span class="role">Partner</span><span class="focus">lic. iur., Rechtsanwalt, CAS IRP-HSG Versicherungs- und Haftpflichtrecht, Sozialversicherungs-Fachmann mit eidg. Fachausweis</span></article>
         <article class="person"><div class="portrait"><img src="images/team/brochon.jpg" alt="Joël E. Brochon" loading="lazy"></div><h3>Joël E. Brochon</h3><span class="role">Partner</span><span class="focus">MLaw, Rechtsanwalt und Urkundsperson des Kantons Zug</span></article>
+      </div>
+      <h3 class="team-label">Anwältinnen, Anwälte und Mitarbeitende</h3>
+      <div class="team team-staff">
         <article class="person"><div class="portrait"><img src="images/team/schuler-villiger.jpg" alt="Claudia Schuler-Villiger" loading="lazy"></div><h3>Claudia Schuler-Villiger</h3><span class="role">Rechtsanwältin</span><span class="focus">MLaw</span></article>
         <article class="person"><div class="portrait"><img src="images/team/gerlach.jpg" alt="Alessandro L. Gerlach" loading="lazy"></div><h3>Alessandro L. Gerlach</h3><span class="role">Rechtsanwalt</span><span class="focus">MLaw, Urkundsperson des Kantons Zug</span></article>
         <article class="person"><div class="portrait"><img src="images/team/zaugg.jpg" alt="Gregor A. Zaugg" loading="lazy"></div><h3>Gregor A. Zaugg</h3><span class="role">Rechtsanwalt</span><span class="focus">MLaw</span></article>
@@ -383,7 +446,7 @@ section.has-banner { padding-top: 0; }
         <div><h3>Head Office Zug</h3><p>Zanetti Rechtsanwälte AG<br>Blegistrasse 9<br>6340 Baar</p></div>
         <div><h3>Office Zürich</h3><p>Zanetti Rechtsanwälte AG<br>Allmendstrasse 2<br>8105 Regensdorf</p></div>
         <div><h3>Office Schwyz</h3><p>Zanetti Rechtsanwälte AG<br>Dorfplatz 2b<br>6405 Immensee</p></div>
-        <div><h3>Telefon</h3><p>T <a href="tel:+41417663585">+41 41 766 35 85</a><br>F +41 41 766 35 80</p></div>
+        <div class="phone"><h3>Telefon</h3><a class="big" href="tel:+41417663585">+41 41 766 35 85</a><p>Fax +41 41 766 35 80</p></div>
       </div>
     </div>
   </section>
