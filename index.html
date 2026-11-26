@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Zanetti Rechtsanwälte</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Zanetti Rechtsanwälte AG – Beratung, Prozessführung und Beurkundungen in Zürich.">
+<meta name="description" content="Zanetti Rechtsanwälte AG – Beratung, Prozessführung und Beurkundungen in Baar, Regensdorf und Immensee.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600&display=swap">
@@ -182,8 +182,6 @@ section.has-banner { padding-top: 0; }
     url("images/kontakt.jpg") center 60% / cover no-repeat,
     var(--navy);
 }
-.credits { font-size: .75rem; }
-.credits a { border-bottom: 1px solid rgba(238,241,246,.25); }
 .contact .eyebrow { color: #c8a776; }
 .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 36px; margin-top: 8px; }
 .contact-grid h3 { font-size: 1.2rem; margin-bottom: 8px; }
@@ -196,6 +194,22 @@ section.has-banner { padding-top: 0; }
 .footer nav { display: flex; gap: 20px; }
 .footer a { text-decoration: none; }
 .footer a:hover { color: var(--on-navy); }
+
+/* Zanetti additions */
+.logo { display: block; height: 34px; width: auto; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .logo { filter: brightness(0) invert(1); } }
+:root[data-theme="dark"] .logo { filter: brightness(0) invert(1); }
+.awards { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 16px; }
+.awards img { width: 96px; height: 96px; object-fit: contain; background: #fff; border: 1px solid var(--line); }
+.banner-team { background:
+    linear-gradient(180deg, rgba(20,35,60,.10), rgba(20,35,60,.65)),
+    url("images/team-banner.jpg") center 30% / cover no-repeat, var(--navy); }
+.portrait { aspect-ratio: 800 / 660; }
+.person .focus { font-size: .85rem; }
+.members a { border: 1px solid var(--line); padding: 10px 16px; font-size: .92rem; color: var(--muted); text-decoration: none; }
+.members a:hover { color: var(--fg); border-color: var(--accent); }
+.hero blockquote { max-width: 34ch; }
+.hero blockquote p { font-size: clamp(1.6rem, 3.6vw, 2.6rem); }
 </style>
 </head>
 <body>
@@ -203,11 +217,7 @@ section.has-banner { padding-top: 0; }
 <header class="masthead">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Zanetti Rechtsanwälte, zur Startseite">
-      <svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true">
-        <rect x="1" y="1" width="42" height="42" fill="none" stroke="currentColor" stroke-width="1.2"/>
-        <text x="22" y="29" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="24" font-weight="600" fill="currentColor">Z</text>
-      </svg>
-      <span class="brand-name"><span>Zanetti</span><span>Rechtsanwälte</span></span>
+      <img class="logo" src="images/logo.svg" alt="Zanetti Rechtsanwälte" width="180" height="38">
     </a>
     <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav">Menü</button>
     <nav class="nav" id="nav" hidden>
@@ -224,8 +234,8 @@ section.has-banner { padding-top: 0; }
   <section class="hero" aria-label="Leitgedanke">
     <div class="wrap">
       <blockquote>
-        <p><span class="latin">Legum servi sumus, ut liberi esse possimus</span>«Wir sind Diener der Gesetze, damit wir frei sein können.»</p>
-        <cite>Marcus Tullius Cicero (106 – 43 v. Chr.)</cite>
+        <p>«Wenn du im Recht bist, kannst du es dir leisten, die Ruhe zu bewahren; und wenn du im Unrecht bist, kannst du es dir nicht leisten, sie zu verlieren.»</p>
+        <cite>Mahatma Gandhi (1869 – 1948)</cite>
       </blockquote>
     </div>
   </section>
@@ -234,22 +244,26 @@ section.has-banner { padding-top: 0; }
     <div class="wrap intro">
       <div class="head">
         <span class="eyebrow">Die Kanzlei</span>
-        <p class="lead">Zanetti ist eine Anwalts- und Notariatskanzlei mit erfahrenen, spezialisierten Partnerinnen und Partnern.</p>
-        <figure class="photo"><img src="images/kanzlei.jpg" alt="Gestapelte, ledergebundene Bücher auf einem Holztisch" width="1400" height="933" loading="lazy"></figure>
+        <p class="lead">Zanetti Rechtsanwälte ist ein gewachsener Zusammenschluss erfahrener und spezialisierter Rechtsanwälte.</p>
+        <div class="awards">
+          <img src="images/awards/award-2026.jpg" alt="Bilanz und PME: Top Anwaltskanzlei 2026" width="320" height="320" loading="lazy">
+          <img src="images/awards/award-2025.jpg" alt="Bilanz und PME: Top Anwaltskanzlei 2025" width="320" height="320" loading="lazy">
+          <img src="images/awards/award-2024.jpg" alt="Bilanz und PME: Top Anwaltskanzlei 2024" width="320" height="320" loading="lazy">
+        </div>
       </div>
       <div class="principles">
         <article>
-          <h3>Früh beigezogen, am meisten bewirkt</h3>
-          <p>Unsere Fachkenntnis ist die Grundlage, auf der wir für Klientinnen und Klienten einen wirtschaftlichen Mehrwert schaffen. Am meisten erreichen wir, wenn wir ein Vorhaben von Anfang an begleiten und Verträge, Strukturen und Risiken mitgestalten können.</p>
+          <h3>Unsere Arbeitsweise</h3>
+          <p>Unsere fachkundige Expertise ist die handwerkliche Basis, auf der wir für unsere Klienten einen wirtschaftlichen Mehrwert erarbeiten. Es freut uns, möglichst frühzeitig mit der Strukturierung der Aufgaben mandatiert zu werden, denn in diesem frühen Stadium der Beratung führt unsere Tätigkeit erfahrungsgemäss zum grössten Nutzen für unsere Klienten.</p>
+          <p class="award">2019, 2022, 2023, 2024 und 2025 wurden wir von Bilanz und Le Temps (2019 und 2022) bzw. Bilanz und PME (2023, 2024 und 2025) als «Top Anwaltskanzlei» ausgezeichnet.</p>
         </article>
         <article>
-          <h3>Unternehmerisch denken</h3>
-          <p>Mehrere unserer Anwälte und Notare sind selbst Verwaltungsräte und arbeiten eng mit Unternehmen zusammen. Sie erhalten bei uns eine Beratung, die rechtliche Präzision mit praktischem Geschäftssinn verbindet.</p>
+          <h3>Wir denken unternehmerisch</h3>
+          <p>Da unsere Anwälte und Notare eng mit Unternehmen zusammenarbeiten und als Organe in Gesellschaften tätig sind, gewinnen Sie in uns einen konstruktiven und unternehmerisch denkenden Partner für Ihr Vorhaben. Wir verfügen über umfangreiche Erfahrung in Gesellschafts-, Arbeits- und Mietrecht, Vertrags- und Familienrecht, Strafrecht, Versicherungs- und Haftpflichtrecht sowie im Sozialversicherungsrecht.</p>
         </article>
         <article>
-          <h3>Stark vor Gericht</h3>
-          <p>Lässt sich ein Streit nicht aussergerichtlich lösen, vertreten wir Sie in Zivil-, Straf- und Verwaltungsverfahren sowie vor Schiedsgerichten, mit langjähriger Prozesserfahrung in allen Instanzen.</p>
-          <p class="award">Platzhalter: Hier können Auszeichnungen stehen, etwa «Top Anwaltskanzlei» eines Wirtschaftsmagazins mit Jahrgang.</p>
+          <h3>Experten – auch vor Gericht</h3>
+          <p>Unsere forensisch tätigen Anwälte verfügen über einen soliden Erfahrungsschatz in Zivilprozessen, Strafverfahren, Schiedsgerichtsbarkeit und Verwaltungsrechtspflege. Ist eine gerichtliche Auseinandersetzung unausweichlich, vertreten wir unsere Klienten vor Gericht.</p>
         </article>
       </div>
     </div>
@@ -259,20 +273,22 @@ section.has-banner { padding-top: 0; }
     <div class="banner">
       <div class="wrap">
         <span class="eyebrow">Dienstleistungen</span>
-        <h2>Rechtsgebiete</h2>
+        <h2>Unsere Dienstleistungen</h2>
       </div>
     </div>
     <div class="wrap">
       <div class="areas">
-        <article><h3>Gesellschaftsrecht</h3><p>Gründungen, Kapitalerhöhungen, Aktionärbindungsverträge, Nachfolgeregelungen und Umstrukturierungen.</p></article>
-        <article><h3>Vertragsrecht</h3><p>Ausarbeitung und Prüfung von Verträgen, AGB und Kooperationen im In- und Ausland.</p></article>
-        <article><h3>Arbeitsrecht</h3><p>Arbeitsverträge, Kündigungen, Konkurrenzverbote und Vertretung bei arbeitsrechtlichen Streitigkeiten.</p></article>
-        <article><h3>Miet- und Immobilienrecht</h3><p>Miet- und Kaufverträge, Bauprojekte, Stockwerkeigentum und Verfahren vor der Schlichtungsbehörde.</p></article>
-        <article><h3>Familien- und Erbrecht</h3><p>Ehe- und Erbverträge, Testamente, Scheidungen und Erbteilungen, mit Sorgfalt und Diskretion.</p></article>
-        <article><h3>Strafrecht</h3><p>Verteidigung und Vertretung von Geschädigten, insbesondere im Wirtschafts- und Strassenverkehrsstrafrecht.</p></article>
-        <article><h3>Haftpflicht und Versicherung</h3><p>Durchsetzung und Abwehr von Schadenersatzansprüchen gegenüber Versicherungen und Haftpflichtigen.</p></article>
-        <article><h3>Sozialversicherungsrecht</h3><p>Ansprüche gegenüber IV, Unfall- und Krankenversicherung sowie Pensionskassen.</p></article>
-        <article><h3>Schiedsgerichtsbarkeit</h3><p>Vertretung in nationalen und internationalen Schiedsverfahren sowie Tätigkeit als Schiedsrichter.</p></article>
+        <article><h3>Arbeitsrecht und Sozialversicherungen</h3><p>Individual- und kollektives Arbeitsrecht für Unternehmen und Privatpersonen, vom Arbeitsvertrag bis zum Aufhebungsvertrag, inklusive Konfliktmanagement und Konkurrenzverboten.</p></article>
+        <article><h3>Familienrecht</h3><p>Eheverträge, Trennung und Scheidung mit allen Fragen zu Unterhalt, Sorgerecht, Vorsorgeausgleich und güterrechtlicher Auseinandersetzung.</p></article>
+        <article><h3>Erbrecht, Sachenrecht</h3><p>Nachlassplanung für Privatpersonen und Familienunternehmen, Willensvollstreckung, erbrechtliche Klagen sowie Immobilienkaufverträge und dingliche Rechte.</p></article>
+        <article><h3>Vertragsrecht</h3><p>Redaktion und Verhandlung von Verträgen aus allen Bereichen des Obligationenrechts, auch mit internationalem Bezug.</p></article>
+        <article><h3>Gesellschaftsrecht</h3><p>Gründung, Umwandlung und Strukturierung von Gesellschaften, Fusionen, Unternehmenskäufe, MBO, Organisationsreglemente und Aktionärbindungsverträge.</p></article>
+        <article><h3>Strafrecht</h3><p>Verteidigung in Strafuntersuchungen und vor Strafgerichten aller Instanzen, Opfervertretung, Strassenverkehrsrecht und Unterstützung von Unternehmen.</p></article>
+        <article><h3>Steuerrecht</h3><p>Gewinn-, Quellen-, Mehrwert-, Einkommens- und Grundstückgewinnsteuern, Vorbescheide, Steuerverfahren und Steueroptimierung.</p></article>
+        <article><h3>Notariat</h3><p>Urkundspersonen der Kantone Schwyz und Zug für gesellschaftsrechtliche Vorgänge sowie ehe- und erbrechtliche Verträge.</p></article>
+        <article><h3>Zivilprozess</h3><p>Vertretung vor Zivil- und Verwaltungsgerichten, Vollstreckungs- und Massnahmeverfahren sowie internationale Rechtshilfe.</p></article>
+        <article><h3>Schuldbetreibung und Konkurs</h3><p>Sicherung und Durchsetzung von Forderungen, Arrestverfahren, Betreibungen mit Auslandsberührung und Anfechtungsklagen.</p></article>
+        <article><h3>Schiedsverfahren</h3><p>Beratung und Vertretung in ad-hoc- und institutionellen Schiedsverfahren (ICC, Schweizer Handelskammern) sowie Tätigkeit als Schiedsrichter.</p></article>
       </div>
     </div>
   </section>
@@ -281,35 +297,50 @@ section.has-banner { padding-top: 0; }
     <div class="wrap notary">
       <div class="head">
         <span class="eyebrow">Notariat</span>
-        <h2>Beurkundungen</h2>
+        <h2>Gründungen und Beurkundungen</h2>
         <div class="prose">
-          <p>Unsere Notarinnen und Notare beurkunden Rechtsgeschäfte und beglaubigen Unterschriften und Kopien. Vereinbaren Sie einen Termin, wir bereiten die Urkunden vorgängig vor.</p>
-          <p>Bitte bringen Sie zum Termin einen gültigen Pass oder eine Identitätskarte mit.</p>
+          <p>Wir unterstützen Sie kompetent und unkompliziert bei der Gründung von Gesellschaften sowie bei sämtlichen notariellen Beurkundungen, von der ersten rechtlichen Beratung bis zur finalen Beurkundung.</p>
+          <p>Ob GmbH, AG, Stiftung oder eine andere Rechtsform: Wir setzen Ihre Gründung effizient, rechtssicher und auf Ihre Bedürfnisse zugeschnitten um.</p>
         </div>
-        <figure class="photo"><img src="images/beurkundungen.jpg" alt="Vertrag mit Unterschriftsfeldern und Füllfederhalter" width="1400" height="1050" loading="lazy"></figure>
+        <figure class="photo"><img src="images/beurkundungen.jpg" alt="Unterzeichnung eines Dokuments" width="1400" height="934" loading="lazy"></figure>
       </div>
       <ul class="checklist">
-        <li><span>Gründungen und Statutenänderungen</span><span>AG, GmbH</span></li>
-        <li><span>Kapitalerhöhungen und -herabsetzungen</span><span>Handelsregister</span></li>
-        <li><span>Grundstückkäufe</span><span>Grundbuch</span></li>
-        <li><span>Ehe- und Erbverträge</span><span>öffentliche Urkunde</span></li>
-        <li><span>Vorsorgeaufträge</span><span>ZGB Art. 361</span></li>
-        <li><span>Beglaubigungen</span><span>Unterschriften, Kopien</span></li>
+        <li><span>Gründung von AG, GmbH, Genossenschaften und Stiftungen</span><span>Gesellschaftsrecht</span></li>
+        <li><span>Statutenänderungen: Firma, Sitz, Zweck</span><span>Gesellschaftsrecht</span></li>
+        <li><span>Kapitalerhöhungen, Übertragung von Aktien und Stammanteilen</span><span>Gesellschaftsrecht</span></li>
+        <li><span>Umwandlungen, Vermögensübertragungen, Liquidationen</span><span>Gesellschaftsrecht</span></li>
+        <li><span>Eheverträge und Erbverträge</span><span>Ehe- und Erbrecht</span></li>
+        <li><span>Testamente, Vorsorgeaufträge, Patientenverfügungen</span><span>Ehe- und Erbrecht</span></li>
+        <li><span>Bürgschaftserklärungen</span><span>Weitere Leistungen</span></li>
+        <li><span>Beglaubigungen von Unterschriften und Kopien</span><span>Weitere Leistungen</span></li>
       </ul>
     </div>
   </section>
 
-  <section id="team">
-    <div class="wrap">
-      <div class="head">
+  <section id="team" class="has-banner">
+    <div class="banner banner-team">
+      <div class="wrap">
         <span class="eyebrow">Team</span>
-        <h2>Partnerinnen und Partner</h2>
+        <h2>Unser Team</h2>
       </div>
+    </div>
+    <div class="wrap">
       <div class="team">
-        <article class="person"><div class="portrait" aria-hidden="true">AM</div><h3>Dr. iur. Anna Muster</h3><span class="role">Partnerin, Rechtsanwältin und Notarin</span><span class="focus">Gesellschafts- und Vertragsrecht</span></article>
-        <article class="person"><div class="portrait" aria-hidden="true">BM</div><h3>lic. iur. Beat Muster</h3><span class="role">Partner, Rechtsanwalt</span><span class="focus">Prozessführung, Strafrecht</span></article>
-        <article class="person"><div class="portrait" aria-hidden="true">CB</div><h3>MLaw Carla Beispiel</h3><span class="role">Rechtsanwältin</span><span class="focus">Arbeits- und Mietrecht</span></article>
-        <article class="person"><div class="portrait" aria-hidden="true">DB</div><h3>Dr. iur. David Beispiel</h3><span class="role">Of Counsel</span><span class="focus">Haftpflicht- und Sozialversicherungsrecht</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/zanetti.jpg" alt="Gianni F. Zanetti" loading="lazy"></div><h3>Gianni F. Zanetti</h3><span class="role">Managing Partner</span><span class="focus">lic. iur., Rechtsanwalt, Fachanwalt SAV Arbeitsrecht, CAS Finanz- und Rechnungswesen für Juristen, CAS Prozessführung – Civil Litigation</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/kammerbauer.jpg" alt="Sandra M. Kammerbauer" loading="lazy"></div><h3>Sandra M. Kammerbauer</h3><span class="role">Partnerin</span><span class="focus">MLaw, Rechtsanwältin und Urkundsperson des Kantons Zug, Fachanwältin SAV Arbeitsrecht</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/locher.jpg" alt="Thomas Locher" loading="lazy"></div><h3>Thomas Locher</h3><span class="role">Partner</span><span class="focus">lic. iur., Rechtsanwalt, CAS IRP-HSG Versicherungs- und Haftpflichtrecht, Sozialversicherungs-Fachmann mit eidg. Fachausweis</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/brochon.jpg" alt="Joël E. Brochon" loading="lazy"></div><h3>Joël E. Brochon</h3><span class="role">Partner</span><span class="focus">MLaw, Rechtsanwalt und Urkundsperson des Kantons Zug</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/schuler-villiger.jpg" alt="Claudia Schuler-Villiger" loading="lazy"></div><h3>Claudia Schuler-Villiger</h3><span class="role">Rechtsanwältin</span><span class="focus">MLaw</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/gerlach.jpg" alt="Alessandro L. Gerlach" loading="lazy"></div><h3>Alessandro L. Gerlach</h3><span class="role">Rechtsanwalt</span><span class="focus">MLaw, Urkundsperson des Kantons Zug</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/zaugg.jpg" alt="Gregor A. Zaugg" loading="lazy"></div><h3>Gregor A. Zaugg</h3><span class="role">Rechtsanwalt</span><span class="focus">MLaw</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/surer.jpg" alt="Lara Surer" loading="lazy"></div><h3>Lara Surer</h3><span class="role">Rechtsanwältin</span><span class="focus">MLaw, Urkundsperson des Kantons Zug</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/ziegler.jpg" alt="Zacharias Ziegler" loading="lazy"></div><h3>Zacharias Ziegler</h3><span class="role">Rechtsanwalt</span><span class="focus">MLaw, Fachanwalt SAV Familienrecht, CAS Familienrecht</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/isenegger.jpg" alt="Daniel Isenegger" loading="lazy"></div><h3>Daniel Isenegger</h3><span class="role">Treuhand</span><span class="focus">Treuhänder mit eidg. Fachausweis, dipl. Treuhandexperte</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/gottraux.jpg" alt="Camille Gottraux" loading="lazy"></div><h3>Camille Gottraux</h3><span class="role">Juristische Mitarbeiterin</span><span class="focus">MLaw</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/naepflin.jpg" alt="Marco Näpflin" loading="lazy"></div><h3>Marco Näpflin</h3><span class="role">Juristischer Mitarbeiter</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/suter.jpg" alt="Vera Suter" loading="lazy"></div><h3>Vera Suter</h3><span class="role">Office Managerin</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/kuci.jpg" alt="Delvina Kuci" loading="lazy"></div><h3>Delvina Kuci</h3><span class="role">Rechtsanwalts- und Notariatsassistentin</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/gaudio.jpg" alt="Ramona Gaudio" loading="lazy"></div><h3>Ramona Gaudio</h3><span class="role">Buchhaltung und Personalwesen</span></article>
       </div>
     </div>
   </section>
@@ -318,21 +349,26 @@ section.has-banner { padding-top: 0; }
     <div class="wrap">
       <div class="head">
         <span class="eyebrow">Publikationen</span>
-        <h2>Beiträge und Vorträge</h2>
+        <h2>Ausgewählte Publikationen</h2>
       </div>
       <ul class="pubs">
-        <li><span class="year">2025</span><span>Die Revision des Aktienrechts in der Praxis: Erfahrungen nach zwei Jahren<span class="src">Beispielbeitrag, Fachzeitschrift für Gesellschaftsrecht</span></span></li>
-        <li><span class="year">2024</span><span>Konkurrenzverbote im Arbeitsvertrag: Was gilt nach Vertragsende?<span class="src">Beispielbeitrag, Vortrag am Arbeitsrechtsforum</span></span></li>
-        <li><span class="year">2023</span><span>Der Vorsorgeauftrag als Instrument der Nachfolgeplanung<span class="src">Beispielbeitrag, Notariatszeitschrift</span></span></li>
+        <li><span class="year">2025</span><span>Sanierungskündigung und Auszugsgarantie<span class="src">Mietrechtspraxis (mp 3/2025) · Gianni F. Zanetti, Alessandro L. Gerlach</span></span></li>
+        <li><span class="year">2024</span><span>Das arbeitsrechtliche Konkurrenzverbot – mit Fokus auf die persönlichen Eigenschaften des Arbeitnehmers<span class="src">Anwaltsrevue 1/2024 · Gianni F. Zanetti, Sandra M. Kammerbauer</span></span></li>
+        <li><span class="year">2022</span><span>Qualifikation des «Bonus»: Lohn oder Gratifikation?<span class="src">Digitaler Rechtsprechungs-Kommentar (dRSK), Ausgabe 131 · Gianni F. Zanetti, Sandra M. Kammerbauer</span></span></li>
+        <li><span class="year">2017</span><span>Reziproke Zugeständnisse bei Aufhebungsverträgen (BGer 4A_673/2016)<span class="src">Digitaler Rechtsprechungs-Kommentar (dRSK), Ausgabe 78 · Gianni F. Zanetti, Sandra M. Kammerbauer</span></span></li>
+        <li><span class="year">2015</span><span>Das arbeitsrechtliche Konkurrenzverbot<span class="src">Zuger Steuer Praxis Nr. 59 · Gianni F. Zanetti</span></span></li>
+        <li><span class="year">2012</span><span>Der arbeitsrechtliche Aufhebungsvertrag<span class="src">Anwaltsrevue 2/2012 · Gianni F. Zanetti</span></span></li>
+        <li><span class="year">2011</span><span>Ausgewählte Aspekte der Rohbaumiete<span class="src">Mietrechtspraxis (mp 2/2011) · Gianni F. Zanetti</span></span></li>
+        <li><span class="year">2010</span><span>Arbeitsverhältnisse im internationalen Kontext<span class="src">Zuger Steuer Praxis Nr. 45 · Gianni F. Zanetti</span></span></li>
       </ul>
       <div class="head" style="margin-top:56px;margin-bottom:20px">
         <span class="eyebrow">Mitgliedschaften</span>
       </div>
       <div class="members">
-        <span>Schweizerischer Anwaltsverband</span>
-        <span>Kantonaler Anwaltsverband</span>
-        <span>Notarenverband</span>
-        <span>Swiss Arbitration Association</span>
+        <a href="https://www.legalnetlink.net">Legal Netlink Alliance</a>
+        <a href="https://www.advokaten-zug.ch">Advokatenverein des Kantons Zug</a>
+        <a href="https://www.sav-fsa.ch">Schweizerischer Anwaltsverband</a>
+        <a href="https://www.zav.ch">Zürcher Anwaltsverband</a>
       </div>
     </div>
   </section>
@@ -341,12 +377,13 @@ section.has-banner { padding-top: 0; }
     <div class="wrap">
       <div class="head">
         <span class="eyebrow">Kontakt</span>
-        <h2>Wir freuen uns auf Ihre Anfrage</h2>
+        <h2>Unsere Standorte</h2>
       </div>
       <div class="contact-grid">
-        <div><h3>Adresse</h3><p>Zanetti Rechtsanwälte AG<br>Musterstrasse 1<br>8001 Zürich</p></div>
-        <div><h3>Telefon und E-Mail</h3><p>+41 44 000 00 00<br><a href="mailto:info@muster-partner.ch">info@muster-partner.ch</a></p></div>
-        <div><h3>Bürozeiten</h3><p>Montag bis Freitag<br>08.30 – 12.00 und 13.30 – 17.30 Uhr</p></div>
+        <div><h3>Head Office Zug</h3><p>Zanetti Rechtsanwälte AG<br>Blegistrasse 9<br>6340 Baar</p></div>
+        <div><h3>Office Zürich</h3><p>Zanetti Rechtsanwälte AG<br>Allmendstrasse 2<br>8105 Regensdorf</p></div>
+        <div><h3>Office Schwyz</h3><p>Zanetti Rechtsanwälte AG<br>Dorfplatz 2b<br>6405 Immensee</p></div>
+        <div><h3>Telefon</h3><p>T <a href="tel:+41417663585">+41 41 766 35 85</a><br>F +41 41 766 35 80</p></div>
       </div>
     </div>
   </section>
@@ -355,10 +392,7 @@ section.has-banner { padding-top: 0; }
 <footer class="footer">
   <div class="wrap">
     <span>© <span id="year">2026</span> Zanetti Rechtsanwälte AG</span>
-    <nav aria-label="Rechtliches"><a href="#kontakt">Impressum</a><a href="#kontakt">Datenschutz</a></nav>
-    <p class="credits">Bilder: <a href="https://commons.wikimedia.org/wiki/File:Leather_bound_books_(Unsplash).jpg">Bücher</a> (CC0) ·
-      <a href="https://commons.wikimedia.org/wiki/File:Legal_Contract_%26_Signature_-_Warm_Tones.jpg">Vertrag</a>, Blogtrepreneur, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a> ·
-      <a href="https://commons.wikimedia.org/wiki/File:Limmat_und_Altstadt_Z%C3%BCrich_an_einem_Winterabend.jpg">Zürich</a>, Barbara Steinemann, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></p>
+    <nav aria-label="Rechtliches"><a href="https://zanettilaw.ch/impressum/">Impressum</a><a href="https://zanettilaw.ch/datenschutz/">Datenschutz</a></nav>
   </div>
 </footer>
 
