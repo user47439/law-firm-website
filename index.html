@@ -86,23 +86,35 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 }
 @media (min-width: 1001px) { .nav[hidden] { display: flex !important; } }
 
-/* Hero */
-.hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); background: var(--navy); color: var(--on-navy); padding: 0; }
-.hero-text { display: grid; align-content: center; gap: 28px; padding-block: clamp(64px, 8vw, 112px); padding-right: clamp(24px, 5vw, 72px); padding-left: max(20px, env(safe-area-inset-left, 0px), calc((100vw - var(--wrap)) / 2 + 20px)); }
-.hero h1 { font-size: clamp(2.8rem, 5.6vw, 4.9rem); letter-spacing: -.015em; }
-.hero h1 em { color: var(--gold-light); }
-.hero .intro { color: var(--on-navy-muted); font-size: 1.08rem; max-width: 46ch; }
+/* Hero: full-bleed columns photo, copy on the left, quote panel right, office bar along the bottom */
+.hero { position: relative; display: grid; grid-template-rows: 1fr auto; min-height: min(760px, calc(100svh - 80px)); padding: 0; color: var(--on-navy);
+  background:
+    linear-gradient(90deg, rgba(0,26,46,.94) 0%, rgba(0,26,46,.82) 38%, rgba(0,26,46,.35) 70%, rgba(0,26,46,.2) 100%),
+    url("images/hero.webp") 70% 30% / cover no-repeat, var(--navy); }
+.hero-inner { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 48px; align-items: end; padding-block: clamp(64px, 9vw, 120px) clamp(40px, 5vw, 64px); }
+.hero-copy { display: grid; gap: 26px; align-content: center; align-self: center; }
 .hero .eyebrow { color: var(--gold-light); }
+.hero h1 { font-size: clamp(3rem, 6.4vw, 5.8rem); line-height: 1; letter-spacing: -.02em; max-width: 12ch; }
+.hero h1 em { color: var(--gold-light); }
+.hero .intro { color: var(--on-navy-muted); font-size: 1.1rem; max-width: 48ch; }
 .cta { display: flex; flex-wrap: wrap; gap: 12px; }
-.hero-media { position: relative; min-height: 420px; background: url("images/hero.webp") center 30% / cover no-repeat, var(--navy-deep); }
-.hero-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,26,46,0) 40%, rgba(0,26,46,.85) 100%); }
-.hero-quote { position: absolute; left: clamp(20px, 4vw, 48px); right: clamp(20px, 4vw, 48px); bottom: clamp(20px, 4vw, 44px); z-index: 1; margin: 0; padding-left: 20px; border-left: 2px solid var(--gold-light); }
-.hero-quote p { font-family: var(--display); font-style: italic; font-size: clamp(1.15rem, 1.7vw, 1.45rem); line-height: 1.35; }
-.hero-quote cite { display: block; margin-top: 10px; font-style: normal; font-size: .78rem; letter-spacing: .08em; color: var(--on-navy-muted); }
-@media (max-width: 880px) {
-  .hero { grid-template-columns: 1fr; }
-  .hero-text { padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
-  .hero-media { min-height: 380px; }
+.hero-quote { margin: 0; padding: 26px 28px; background: rgba(0,26,46,.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(238,242,246,.14); border-top: 2px solid var(--gold-light); }
+.hero-quote::before { content: "«"; display: block; font-family: var(--display); font-size: 3.4rem; line-height: .6; color: var(--gold-light); margin-bottom: 10px; }
+.hero-quote p { font-family: var(--display); font-style: italic; font-size: 1.28rem; line-height: 1.38; }
+.hero-quote cite { display: block; margin-top: 14px; font-style: normal; font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; color: var(--on-navy-muted); }
+.hero-bar { background: rgba(0,26,46,.78); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid rgba(238,242,246,.12); }
+.hero-bar .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 40px; padding-block: 18px; font-size: .86rem; }
+.hero-bar .loc { display: flex; flex-wrap: wrap; gap: 8px 28px; color: var(--on-navy-muted); }
+.hero-bar .loc span::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: 10px; vertical-align: middle; background: var(--gold-light); transform: rotate(45deg); }
+.hero-bar .loc strong { color: var(--on-navy); font-weight: 600; }
+.hero-bar .tel { margin-left: auto; color: var(--gold-light); font-weight: 600; text-decoration: none; letter-spacing: .02em; }
+.hero-bar .tel:hover { color: var(--on-navy); }
+@media (max-width: 900px) {
+  .hero { min-height: 0; background:
+    linear-gradient(180deg, rgba(0,26,46,.9) 0%, rgba(0,26,46,.78) 60%, rgba(0,26,46,.6) 100%),
+    url("images/hero.webp") 60% 30% / cover no-repeat, var(--navy); }
+  .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+  .hero-bar .tel { margin-left: 0; }
 }
 
 /* Facts */
@@ -238,20 +250,30 @@ section { padding-block: clamp(72px, 10vw, 128px); }
 
 <main id="top">
   <section class="hero" aria-label="Einleitung">
-    <div class="hero-text">
-      <span class="eyebrow">Anwälte und Notare · Zug, Zürich, Schwyz</span>
-      <h1>Recht mit <em>unternehmerischem</em> Blick.</h1>
-      <p class="intro">Zanetti Rechtsanwälte ist ein gewachsener Zusammenschluss erfahrener und spezialisierter Rechtsanwälte. Wir beraten Unternehmen und Privatpersonen und vertreten sie vor Gericht.</p>
-      <div class="cta">
-        <a class="btn btn-gold" href="#kontakt">Kontakt aufnehmen</a>
-        <a class="btn btn-line" href="#dienstleistungen">Unsere Dienstleistungen</a>
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <span class="eyebrow">Anwälte und Notare · Zug, Zürich, Schwyz</span>
+        <h1>Recht mit <em>unternehmerischem</em> Blick.</h1>
+        <p class="intro">Zanetti Rechtsanwälte ist ein gewachsener Zusammenschluss erfahrener und spezialisierter Rechtsanwälte. Wir beraten Unternehmen und Privatpersonen und vertreten sie vor Gericht.</p>
+        <div class="cta">
+          <a class="btn btn-gold" href="#kontakt">Kontakt aufnehmen</a>
+          <a class="btn btn-line" href="#dienstleistungen">Unsere Dienstleistungen</a>
+        </div>
       </div>
-    </div>
-    <div class="hero-media">
       <blockquote class="hero-quote">
-        <p>«Wenn du im Recht bist, kannst du es dir leisten, die Ruhe zu bewahren; und wenn du im Unrecht bist, kannst du es dir nicht leisten, sie zu verlieren.»</p>
+        <p>Wenn du im Recht bist, kannst du es dir leisten, die Ruhe zu bewahren; und wenn du im Unrecht bist, kannst du es dir nicht leisten, sie zu verlieren.»</p>
         <cite>Mahatma Gandhi (1869 – 1948)</cite>
       </blockquote>
+    </div>
+    <div class="hero-bar">
+      <div class="wrap">
+        <div class="loc">
+          <span><strong>Zug</strong> · Baar</span>
+          <span><strong>Zürich</strong> · Regensdorf</span>
+          <span><strong>Schwyz</strong> · Immensee</span>
+        </div>
+        <a class="tel" href="tel:+41417663585">+41 41 766 35 85</a>
+      </div>
     </div>
   </section>
 
