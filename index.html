@@ -8,7 +8,7 @@
 <meta name="description" content="Zanetti Rechtsanwälte AG – Beratung, Prozessführung und Beurkundungen in Baar, Regensdorf und Immensee.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Fira+Sans:wght@300;400;500;600&display=swap">
 <style>
 /* Layout: split hero (navy statement panel beside the columns photo), facts band,
    then alternating light and navy sections; sticky section titles on wide screens. */
@@ -25,8 +25,8 @@
   --gold-light: #d9bc8c;
   --on-navy: #eef2f6;
   --on-navy-muted: rgba(238,242,246,.68);
-  --display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
-  --body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --display: "Gilda Display", "Iowan Old Style", Georgia, serif;
+  --body: "Fira Sans", "Helvetica Neue", Arial, sans-serif;
   --wrap: 1200px;
 }
 @media (prefers-color-scheme: dark) {
@@ -43,12 +43,12 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
-body { margin: 0; background: var(--bg); color: var(--fg); font: 400 1rem/1.7 var(--body); -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 300 1.05rem/1.7 var(--body); -webkit-font-smoothing: antialiased; }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.08; margin: 0; text-wrap: balance; }
-h2 { font-size: clamp(2.4rem, 4.6vw, 3.6rem); letter-spacing: -.01em; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.15; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(2.1rem, 3.8vw, 3rem); letter-spacing: 0; }
 h3 { font-size: 1.55rem; }
 p { margin: 0; }
 
@@ -94,13 +94,13 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .hero-inner { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 48px; align-items: end; padding-block: clamp(64px, 9vw, 120px) clamp(40px, 5vw, 64px); }
 .hero-copy { display: grid; gap: 26px; align-content: center; align-self: center; }
 .hero .eyebrow { color: var(--gold-light); }
-.hero h1 { font-size: clamp(3rem, 6.4vw, 5.8rem); line-height: 1; letter-spacing: -.02em; max-width: 12ch; }
-.hero h1 em { color: var(--gold-light); }
+.hero h1 { font-size: clamp(2.6rem, 5.2vw, 4.6rem); line-height: 1.05; letter-spacing: -.01em; max-width: 13ch; }
+.hero h1 em { color: var(--gold-light); font-style: normal; }
 .hero .intro { color: var(--on-navy-muted); font-size: 1.1rem; max-width: 48ch; }
 .cta { display: flex; flex-wrap: wrap; gap: 12px; }
 .hero-quote { margin: 0; padding: 26px 28px; background: rgba(0,26,46,.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(238,242,246,.14); border-top: 2px solid var(--gold-light); }
 .hero-quote::before { content: "«"; display: block; font-family: var(--display); font-size: 3.4rem; line-height: .6; color: var(--gold-light); margin-bottom: 10px; }
-.hero-quote p { font-family: var(--display); font-style: italic; font-size: 1.28rem; line-height: 1.38; }
+.hero-quote p { font-family: var(--display); font-size: 1.2rem; line-height: 1.45; }
 .hero-quote cite { display: block; margin-top: 14px; font-style: normal; font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; color: var(--on-navy-muted); }
 .hero-bar { background: rgba(0,26,46,.78); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid rgba(238,242,246,.12); }
 .hero-bar .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 40px; padding-block: 18px; font-size: .86rem; }
