@@ -10,94 +10,110 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Fira+Sans:wght@300;400;500;600&display=swap">
 <style>
-/* Layout: split hero (navy statement panel beside the columns photo), facts band,
-   then alternating light and navy sections; sticky section titles on wide screens. */
+/* Layout: sticky masthead, quote hero over a fluted-column motif, then calm single-column sections on a narrow measure with wide grids for services and team. */
 :root {
-  --navy: #002843;
-  --navy-deep: #001a2e;
-  --navy-soft: #0d3656;
-  --bg: #f5f6f8;
-  --paper: #ffffff;
-  --fg: #0e1a26;
-  --muted: #566170;
-  --line: #dde1e6;
-  --gold: #b8925a;
-  --gold-light: #d9bc8c;
-  --on-navy: #eef2f6;
-  --on-navy-muted: rgba(238,242,246,.68);
+  --navy: #14233c;
+  --navy-2: #1d3152;
+  --bg: #fbfbf9;
+  --surface: #f1f2f0;
+  --fg: #1b2230;
+  --muted: #5b6474;
+  --line: #d9dcdf;
+  --accent: #9a7b4f;
+  --on-navy: #eef1f6;
   --display: "Gilda Display", "Iowan Old Style", Georgia, serif;
   --body: "Fira Sans", "Helvetica Neue", Arial, sans-serif;
-  --wrap: 1200px;
+  --gold-light: #d9bc8c;
+  --on-navy-muted: rgba(238,242,246,.7);
+  --measure: 68ch;
+  --wrap: 1160px;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0b131d; --paper: #111c29; --fg: #e8ecf1; --muted: #9ba7b6; --line: #24344a;
-    --gold: #d3b07a; color-scheme: dark;
+    --bg: #0f1724; --surface: #162133; --fg: #e6e9ef; --muted: #9aa4b4;
+    --line: #2a3850; --accent: #c8a776; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0b131d; --paper: #111c29; --fg: #e8ecf1; --muted: #9ba7b6; --line: #24344a;
-  --gold: #d3b07a; color-scheme: dark;
+  --bg: #0f1724; --surface: #162133; --fg: #e6e9ef; --muted: #9aa4b4;
+  --line: #2a3850; --accent: #c8a776; color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 88px; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
-body { margin: 0; background: var(--bg); color: var(--fg); font: 300 1.05rem/1.7 var(--body); -webkit-font-smoothing: antialiased; }
-img { max-width: 100%; display: block; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font: 300 1.0625rem/1.65 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; }
 a { color: inherit; }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.15; margin: 0; text-wrap: balance; }
-h2 { font-size: clamp(2.1rem, 3.8vw, 3rem); letter-spacing: 0; }
-h3 { font-size: 1.55rem; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.15; text-wrap: balance; margin: 0; }
+h2 { font-size: clamp(2rem, 4vw, 2.75rem); }
+h3 { font-size: 1.5rem; }
 p { margin: 0; }
 
-.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
-.eyebrow { display: inline-flex; align-items: center; gap: 12px; font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
-.eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
-
-/* Buttons */
-.btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; font: 600 .88rem var(--body); letter-spacing: .02em; text-decoration: none; border: 1px solid transparent; transition: background .2s, color .2s, border-color .2s; }
-.btn-gold { background: var(--gold-light); color: #1d1608; }
-.btn-gold:hover { background: #e6cda4; }
-.btn-line { border-color: rgba(238,242,246,.4); color: var(--on-navy); }
-.btn-line:hover { border-color: var(--gold-light); color: var(--gold-light); }
-.btn-navy { background: var(--navy); color: var(--on-navy); }
-.btn-navy:hover { background: var(--navy-soft); }
+.wrap {
+  max-width: var(--wrap); margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+.eyebrow {
+  font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--accent);
+}
 
 /* Masthead */
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--paper); }
-.masthead { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--paper) 94%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-.masthead .wrap { display: flex; align-items: center; gap: 32px; min-height: 80px; }
-.logo { height: 36px; width: auto; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .logo { filter: brightness(0) invert(1); } }
-:root[data-theme="dark"] .logo { filter: brightness(0) invert(1); }
-.nav { display: flex; gap: 28px; margin-left: auto; }
-.nav a { text-decoration: none; font-size: .88rem; font-weight: 500; color: var(--muted); padding-block: 6px; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
-.nav a:hover { color: var(--fg); border-color: var(--gold); }
-.masthead .btn { padding: 11px 18px; font-size: .82rem; }
-.menu-btn { display: none; margin-left: auto; background: none; border: 1px solid var(--line); color: var(--fg); padding: 9px 14px; font: 600 .85rem var(--body); cursor: pointer; }
-@media (max-width: 1000px) {
-  .menu-btn { display: block; }
-  .masthead .btn { display: none; }
-  .nav { position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; gap: 0; margin: 0; background: var(--paper); border-bottom: 1px solid var(--line); padding: 8px max(20px, env(safe-area-inset-right, 0px)) 16px max(20px, env(safe-area-inset-left, 0px)); }
-  .nav[hidden] { display: none !important; }
-  .nav a { padding-block: 13px; border-bottom: 1px solid var(--line); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+.masthead {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
 }
-@media (min-width: 1001px) { .nav[hidden] { display: flex !important; } }
+.masthead .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 76px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand-mark { width: 44px; height: 44px; flex: none; color: var(--fg); }
+.brand-name { font-family: var(--display); font-size: 1.15rem; line-height: 1.05; letter-spacing: .06em; text-transform: uppercase; }
+.brand-name span { display: block; }
+.nav { display: flex; gap: 28px; }
+.nav a { text-decoration: none; font-size: .92rem; color: var(--muted); padding-block: 6px; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
+.nav a:hover { color: var(--fg); border-color: var(--accent); }
+.menu-btn { display: none; background: none; border: 1px solid var(--line); color: var(--fg); border-radius: 4px; padding: 8px 12px; font: 500 .9rem var(--body); cursor: pointer; }
+
+@media (max-width: 900px) {
+  .menu-btn { display: block; }
+  .nav {
+    position: absolute; left: 0; right: 0; top: 100%;
+    flex-direction: column; gap: 0;
+    background: var(--bg); border-bottom: 1px solid var(--line);
+    padding: 8px max(20px, env(safe-area-inset-right, 0px)) 16px max(20px, env(safe-area-inset-left, 0px));
+  }
+  .nav[hidden] { display: none !important; }
+  .nav a { padding-block: 12px; border-bottom: 1px solid var(--line); }
+}
+@media (min-width: 901px) { .nav[hidden] { display: flex !important; } }
 
 /* Hero: full-bleed columns photo, copy on the left, quote panel right, office bar along the bottom */
-.hero { position: relative; display: grid; grid-template-rows: 1fr auto; min-height: min(760px, calc(100svh - 80px)); padding: 0; color: var(--on-navy);
+.hero { position: relative; display: grid; grid-template-rows: 1fr auto; min-height: min(760px, calc(100svh - 76px)); padding: 0 !important; color: var(--on-navy);
   background:
     linear-gradient(90deg, rgba(0,26,46,.94) 0%, rgba(0,26,46,.82) 38%, rgba(0,26,46,.35) 70%, rgba(0,26,46,.2) 100%),
     url("images/hero.webp") 70% 30% / cover no-repeat, var(--navy); }
 .hero-inner { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 48px; align-items: end; padding-block: clamp(64px, 9vw, 120px) clamp(40px, 5vw, 64px); }
-.hero-copy { display: grid; gap: 26px; align-content: center; align-self: center; }
-.hero .eyebrow { color: var(--gold-light); }
+.hero-copy { display: grid; gap: 26px; align-self: center; }
+.hero .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--gold-light); }
+.hero .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
 .hero h1 { font-size: clamp(2.6rem, 5.2vw, 4.6rem); line-height: 1.05; letter-spacing: -.01em; max-width: 13ch; }
 .hero h1 em { color: var(--gold-light); font-style: normal; }
-.hero .intro { color: var(--on-navy-muted); font-size: 1.1rem; max-width: 48ch; }
+.hero-lede { color: var(--on-navy-muted); font-size: 1.1rem; max-width: 48ch; }
 .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; padding: 14px 24px; font: 600 .88rem var(--body); letter-spacing: .02em; text-decoration: none; border: 1px solid transparent; transition: background .2s, color .2s, border-color .2s; }
+.btn-gold { background: var(--gold-light); color: #1d1608; }
+.btn-gold:hover { background: #e6cda4; }
+.btn-line { border-color: rgba(238,242,246,.4); color: var(--on-navy); }
+.btn-line:hover { border-color: var(--gold-light); color: var(--gold-light); }
 .hero-quote { margin: 0; padding: 26px 28px; background: rgba(0,26,46,.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(238,242,246,.14); border-top: 2px solid var(--gold-light); }
 .hero-quote::before { content: "«"; display: block; font-family: var(--display); font-size: 3.4rem; line-height: .6; color: var(--gold-light); margin-bottom: 10px; }
 .hero-quote p { font-family: var(--display); font-size: 1.2rem; line-height: 1.45; }
@@ -116,135 +132,125 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   .hero-inner { grid-template-columns: 1fr; gap: 36px; }
   .hero-bar .tel { margin-left: 0; }
 }
-
-/* Facts */
-.facts { background: var(--paper); border-bottom: 1px solid var(--line); }
-.facts dl { margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.facts dl > div { padding: 30px 24px; display: grid; gap: 6px; border-left: 1px solid var(--line); }
-.facts dl > div:first-child { border-left: 0; padding-left: 0; }
-.facts dt { font-family: var(--display); font-size: 3rem; line-height: 1; color: var(--navy); }
-.facts dd { margin: 0; font-size: .86rem; color: var(--muted); max-width: 26ch; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .facts dt { color: var(--gold); } }
-:root[data-theme="dark"] .facts dt { color: var(--gold); }
-@media (max-width: 760px) {
-  .facts dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .facts dl > div { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); }
-  .facts dl > div:nth-child(-n+2) { border-top: 0; }
-}
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
 
 /* Sections */
-section { padding-block: clamp(72px, 10vw, 128px); }
-.split { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(36px, 6vw, 96px); align-items: start; }
-.split-head { display: grid; gap: 18px; }
-@media (min-width: 901px) { .split-head { position: sticky; top: 120px; } }
-@media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
-.lede { color: var(--muted); font-size: 1.05rem; max-width: 44ch; }
+section { padding-block: clamp(64px, 9vw, 112px); }
+section + section { border-top: 1px solid var(--line); }
+.head { display: grid; gap: 14px; margin-bottom: 44px; max-width: var(--measure); }
+.lead { font-family: var(--display); font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.3; max-width: 32ch; text-wrap: balance; }
+.prose { max-width: var(--measure); display: grid; gap: 18px; color: var(--muted); }
 
-/* Kanzlei */
-.principles article { display: grid; gap: 10px; padding-block: 32px; border-top: 1px solid var(--line); }
-.principles article:first-child { padding-top: 0; border-top: 0; }
+.intro { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 88px); }
+.principles { display: grid; gap: 36px; }
+.principles article { display: grid; gap: 10px; }
 .principles p { color: var(--muted); }
-.awards { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
-.awards img { width: 92px; height: 92px; object-fit: contain; background: #fff; border-radius: 50%; padding: 4px; box-shadow: 0 0 0 1px var(--line); }
-.award-note { font-size: .86rem; color: var(--muted); max-width: 46ch; }
+.award { margin-top: 8px; padding: 18px 20px; background: var(--surface); border-left: 2px solid var(--accent); font-size: .95rem; color: var(--muted); }
+@media (max-width: 800px) { .intro { grid-template-columns: 1fr; } }
 
-/* Services */
-.services { background: var(--navy); color: var(--on-navy); }
-.services .lede { color: var(--on-navy-muted); }
-.services .eyebrow { color: var(--gold-light); }
-.services-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 56px; }
-.services-head > div { display: grid; gap: 18px; }
-.areas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.12); }
-.areas article { background: var(--navy); padding: 30px 28px 32px; display: grid; gap: 12px; align-content: start; transition: background .25s; }
-.areas article:hover { background: var(--navy-soft); }
-.areas .icon { width: 36px; height: 36px; background: var(--gold-light); -webkit-mask: var(--i) center / contain no-repeat; mask: var(--i) center / contain no-repeat; margin-bottom: 6px; }
-.areas h3 { font-size: 1.5rem; }
-.areas p { color: var(--on-navy-muted); font-size: .92rem; }
-.areas .more { background: var(--navy-deep); }
-.areas .more p { color: var(--on-navy); }
-.areas .more a { color: var(--gold-light); font-weight: 600; font-size: .9rem; text-decoration: none; }
-@media (max-width: 960px) { .areas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 600px) { .areas { grid-template-columns: 1fr; } }
+section.has-banner { padding-top: 0; }
+.banner {
+  margin-bottom: clamp(48px, 7vw, 80px);
+  color: var(--on-navy);
+  background:
+    linear-gradient(180deg, rgba(20,35,60,.15), rgba(20,35,60,.65)),
+    url("images/dienstleistungen.webp") center 40% / cover no-repeat,
+    var(--navy);
+}
+.banner .wrap { min-height: clamp(260px, 36vw, 440px); display: flex; flex-direction: column; justify-content: flex-end; gap: 10px; padding-block: 40px; text-shadow: 0 2px 16px rgba(10,18,32,.6); }
+.banner .eyebrow { color: #e3c999; }
+.banner h2 { font-size: clamp(2.4rem, 5vw, 3.6rem); }
+.areas { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+.areas article { padding: 26px 24px 28px 0; border-bottom: 1px solid var(--line); display: grid; gap: 8px; align-content: start; }
+.areas p { color: var(--muted); font-size: .95rem; }
 
-/* Notary */
-.notary-photo { aspect-ratio: 4 / 3; width: 100%; height: auto; object-fit: cover; margin-top: 12px; }
-.groups { display: grid; gap: 36px; }
-.group h3 { font-family: var(--body); font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
-.group ul { list-style: none; margin: 0; padding: 0; }
-.group li { display: flex; gap: 14px; padding-block: 14px; border-bottom: 1px solid var(--line); }
-.group li::before { content: ""; flex: none; width: 6px; height: 6px; margin-top: .7em; background: var(--gold); transform: rotate(45deg); }
-.notary-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; padding: 24px 28px; background: var(--paper); border: 1px solid var(--line); }
-.notary-cta p { flex: 1 1 260px; color: var(--muted); font-size: .95rem; }
+.photo { margin: 0; }
+.photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.intro .photo { margin-top: 32px; }
+.notary .photo { margin-top: 28px; }
+.notary .photo img { aspect-ratio: 16 / 10; }
 
-/* Team */
-.team-section { background: var(--paper); border-block: 1px solid var(--line); }
-.section-head { display: grid; gap: 18px; margin-bottom: 56px; max-width: 60ch; }
-.team-label { font-family: var(--body); font-size: .74rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
-.team { display: grid; gap: 40px 24px; }
-.team-partners { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-bottom: 72px; }
-.team-staff { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px 24px; }
-@media (max-width: 1000px) { .team-partners, .team-staff { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 720px) { .team-partners, .team-staff { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.person { display: grid; gap: 4px; align-content: start; }
-.portrait { aspect-ratio: 800 / 660; overflow: hidden; background: var(--bg); margin-bottom: 14px; }
-.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; transition: transform .5s ease; }
-.team-partners .portrait { aspect-ratio: 4 / 4.4; }
-.person:hover .portrait img { transform: scale(1.04); }
-.person h3 { font-size: 1.45rem; }
-.team-staff h3 { font-size: 1.22rem; }
-.person .role { color: var(--gold); font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-.person .focus { color: var(--muted); font-size: .84rem; line-height: 1.55; margin-top: 4px; }
+.alt { background: var(--surface); }
+.notary { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 88px); align-items: start; }
+.checklist { list-style: none; margin: 0; padding: 0; display: grid; }
+.checklist li { padding-block: 14px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; }
+.checklist li span:last-child { color: var(--muted); font-size: .88rem; text-align: right; }
+@media (max-width: 800px) { .notary { grid-template-columns: 1fr; } }
 
-/* Publications */
-.pubs { list-style: none; margin: 0; padding: 0; }
-.pubs li { display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: 20px; padding-block: 22px; border-top: 1px solid var(--line); }
-.pubs li:last-child { border-bottom: 1px solid var(--line); }
-.pubs .year { font-family: var(--display); font-size: 1.7rem; line-height: 1.1; color: var(--gold); font-variant-numeric: tabular-nums; }
-.pubs .title { font-weight: 600; }
-.pubs .src { display: block; color: var(--muted); font-size: .86rem; margin-top: 4px; }
-.members { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 48px; }
-.members a { padding: 10px 16px; border: 1px solid var(--line); background: var(--paper); font-size: .86rem; color: var(--muted); text-decoration: none; transition: color .2s, border-color .2s; }
-.members a:hover { color: var(--fg); border-color: var(--gold); }
+.team { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 40px 28px; }
+.person { display: grid; gap: 6px; align-content: start; }
+.portrait {
+  aspect-ratio: 4 / 5; max-width: 100%; margin-bottom: 12px;
+  background: linear-gradient(160deg, var(--navy-2), var(--navy));
+  display: grid; place-items: center;
+  color: var(--on-navy); font-family: var(--display); font-size: 3rem; letter-spacing: .06em;
+  overflow: hidden;
+}
+/* To add a portrait, put <img src="images/team/name.jpg" alt=""> inside .portrait;
+   it covers the initials. Without an image, the initials stay visible. */
+.portrait { position: relative; }
+.portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
+.person .role { color: var(--accent); font-size: .85rem; font-weight: 600; }
+.person .focus { color: var(--muted); font-size: .92rem; }
 
-/* Contact */
-.contact { background: var(--navy-deep); color: var(--on-navy); }
-.contact .eyebrow { color: var(--gold-light); }
-.contact-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 28px; margin-bottom: 48px; }
-.contact-top > div { display: grid; gap: 18px; }
-.phone-big { font-family: var(--display); font-size: clamp(2rem, 4vw, 3rem); color: var(--gold-light); text-decoration: none; line-height: 1; }
-.phone-sub { color: var(--on-navy-muted); font-size: .86rem; }
-.contact-top .phone { gap: 8px; }
-.offices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-.office { display: grid; gap: 10px; align-content: start; padding: 28px; background: var(--navy); border-top: 2px solid var(--gold-light); }
-.office h3 { font-size: 1.8rem; }
-.office .tag { font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-light); }
-.office p { color: var(--on-navy-muted); }
-.office a { color: var(--on-navy); font-size: .86rem; font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(217,188,140,.6); justify-self: start; margin-top: 6px; }
-.office a:hover { color: var(--gold-light); }
-@media (max-width: 800px) { .offices { grid-template-columns: 1fr; } }
+.pubs { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.pubs li { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 20px; padding-block: 20px; border-bottom: 1px solid var(--line); }
+.pubs .year { font-variant-numeric: tabular-nums; color: var(--accent); font-weight: 600; }
+.pubs .src { display: block; color: var(--muted); font-size: .9rem; margin-top: 2px; }
 
-.footer { background: var(--navy-deep); color: var(--on-navy-muted); font-size: .82rem; border-top: 1px solid rgba(255,255,255,.1); }
-.footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-block: 26px; }
+.members { display: flex; flex-wrap: wrap; gap: 12px; }
+.members span { border: 1px solid var(--line); padding: 10px 16px; font-size: .92rem; color: var(--muted); }
+
+.contact {
+  color: var(--on-navy);
+  background:
+    linear-gradient(180deg, rgba(20,35,60,.88), rgba(20,35,60,.94)),
+    url("images/kontakt.jpg") center 60% / cover no-repeat,
+    var(--navy);
+}
+.contact .eyebrow { color: #c8a776; }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 36px; margin-top: 8px; }
+.contact-grid h3 { font-size: 1.2rem; margin-bottom: 8px; }
+.contact-grid p { color: rgba(238,241,246,.75); }
+.contact-grid a { text-decoration: none; border-bottom: 1px solid rgba(200,167,118,.6); }
+.contact + .footer { border-top: 1px solid rgba(255,255,255,.1); }
+
+.footer { background: var(--navy); color: rgba(238,241,246,.6); font-size: .85rem; }
+.footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-block: 24px; }
 .footer nav { display: flex; gap: 20px; }
 .footer a { text-decoration: none; }
 .footer a:hover { color: var(--on-navy); }
+
+/* Zanetti additions */
+.logo { display: block; height: 34px; width: auto; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .logo { filter: brightness(0) invert(1); } }
+:root[data-theme="dark"] .logo { filter: brightness(0) invert(1); }
+.awards { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 16px; }
+.awards img { width: 96px; height: 96px; object-fit: contain; background: #fff; border: 1px solid var(--line); }
+.banner-team { background:
+    linear-gradient(180deg, rgba(20,35,60,.10), rgba(20,35,60,.65)),
+    url("images/team-banner.jpg") center 30% / cover no-repeat, var(--navy); }
+.portrait { aspect-ratio: 800 / 660; }
+.person .focus { font-size: .85rem; }
+.members a { border: 1px solid var(--line); padding: 10px 16px; font-size: .92rem; color: var(--muted); text-decoration: none; }
+.members a:hover { color: var(--fg); border-color: var(--accent); }
 </style>
 </head>
 <body>
 
 <header class="masthead">
   <div class="wrap">
-    <a href="#top" aria-label="Zanetti Rechtsanwälte, zur Startseite"><img class="logo" src="images/logo.svg" alt="Zanetti Rechtsanwälte" width="172" height="36"></a>
+    <a class="brand" href="#top" aria-label="Zanetti Rechtsanwälte, zur Startseite">
+      <img class="logo" src="images/logo.svg" alt="Zanetti Rechtsanwälte" width="180" height="38">
+    </a>
     <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav">Menü</button>
     <nav class="nav" id="nav" hidden>
-      <a href="#kanzlei">Kanzlei</a>
       <a href="#dienstleistungen">Dienstleistungen</a>
       <a href="#beurkundungen">Beurkundungen</a>
       <a href="#team">Team</a>
       <a href="#publikationen">Publikationen</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
-    <a class="btn btn-navy" href="#kontakt">Kontakt aufnehmen</a>
   </div>
 </header>
 
@@ -254,7 +260,7 @@ section { padding-block: clamp(72px, 10vw, 128px); }
       <div class="hero-copy">
         <span class="eyebrow">Anwälte und Notare · Zug, Zürich, Schwyz</span>
         <h1>Recht mit <em>unternehmerischem</em> Blick.</h1>
-        <p class="intro">Zanetti Rechtsanwälte ist ein gewachsener Zusammenschluss erfahrener und spezialisierter Rechtsanwälte. Wir beraten Unternehmen und Privatpersonen und vertreten sie vor Gericht.</p>
+        <p class="hero-lede">Zanetti Rechtsanwälte ist ein gewachsener Zusammenschluss erfahrener und spezialisierter Rechtsanwälte. Wir beraten Unternehmen und Privatpersonen und vertreten sie vor Gericht.</p>
         <div class="cta">
           <a class="btn btn-gold" href="#kontakt">Kontakt aufnehmen</a>
           <a class="btn btn-line" href="#dienstleistungen">Unsere Dienstleistungen</a>
@@ -277,33 +283,22 @@ section { padding-block: clamp(72px, 10vw, 128px); }
     </div>
   </section>
 
-  <div class="facts" aria-label="Kanzlei in Zahlen">
-    <div class="wrap">
-      <dl>
-        <div><dt>3</dt><dd>Standorte in Baar, Regensdorf und Immensee</dd></div>
-        <div><dt>11</dt><dd>Rechtsgebiete in Beratung und Prozess</dd></div>
-        <div><dt>4</dt><dd>Urkundspersonen der Kantone Zug und Schwyz</dd></div>
-        <div><dt>5×</dt><dd>als «Top Anwaltskanzlei» ausgezeichnet seit 2019</dd></div>
-      </dl>
-    </div>
-  </div>
-
   <section id="kanzlei">
-    <div class="wrap split">
-      <div class="split-head">
+    <div class="wrap intro">
+      <div class="head">
         <span class="eyebrow">Die Kanzlei</span>
-        <h2>Früh beigezogen, am meisten bewirkt.</h2>
+        <p class="lead">Zanetti Rechtsanwälte ist ein gewachsener Zusammenschluss erfahrener und spezialisierter Rechtsanwälte.</p>
         <div class="awards">
           <img src="images/awards/award-2026.jpg" alt="Bilanz und PME: Top Anwaltskanzlei 2026" width="320" height="320" loading="lazy">
           <img src="images/awards/award-2025.jpg" alt="Bilanz und PME: Top Anwaltskanzlei 2025" width="320" height="320" loading="lazy">
           <img src="images/awards/award-2024.jpg" alt="Bilanz und PME: Top Anwaltskanzlei 2024" width="320" height="320" loading="lazy">
         </div>
-        <p class="award-note">2019, 2022, 2023, 2024 und 2025 wurden wir von Bilanz und Le Temps (2019 und 2022) bzw. Bilanz und PME (2023, 2024 und 2025) als «Top Anwaltskanzlei» ausgezeichnet.</p>
       </div>
       <div class="principles">
         <article>
           <h3>Unsere Arbeitsweise</h3>
           <p>Unsere fachkundige Expertise ist die handwerkliche Basis, auf der wir für unsere Klienten einen wirtschaftlichen Mehrwert erarbeiten. Es freut uns, möglichst frühzeitig mit der Strukturierung der Aufgaben mandatiert zu werden, denn in diesem frühen Stadium der Beratung führt unsere Tätigkeit erfahrungsgemäss zum grössten Nutzen für unsere Klienten.</p>
+          <p class="award">2019, 2022, 2023, 2024 und 2025 wurden wir von Bilanz und Le Temps (2019 und 2022) bzw. Bilanz und PME (2023, 2024 und 2025) als «Top Anwaltskanzlei» ausgezeichnet.</p>
         </article>
         <article>
           <h3>Wir denken unternehmerisch</h3>
@@ -311,154 +306,127 @@ section { padding-block: clamp(72px, 10vw, 128px); }
         </article>
         <article>
           <h3>Experten – auch vor Gericht</h3>
-          <p>Unsere forensisch tätigen Anwälte verfügen über einen soliden Erfahrungsschatz in Zivilprozessen, Strafverfahren, Schiedsgerichtsbarkeit und Verwaltungsrechtspflege. Ist eine gerichtliche Auseinandersetzung unausweichlich, vertreten wir unsere Klienten vor Gericht und setzen unsere prozessuale Expertise für den grösstmöglichen Erfolg ein.</p>
+          <p>Unsere forensisch tätigen Anwälte verfügen über einen soliden Erfahrungsschatz in Zivilprozessen, Strafverfahren, Schiedsgerichtsbarkeit und Verwaltungsrechtspflege. Ist eine gerichtliche Auseinandersetzung unausweichlich, vertreten wir unsere Klienten vor Gericht.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="dienstleistungen" class="services">
-    <div class="wrap">
-      <div class="services-head">
-        <div>
-          <span class="eyebrow">Dienstleistungen</span>
-          <h2>Beratung und Prozessführung</h2>
-        </div>
-        <p class="lede">Von der Vertragsgestaltung bis zum Schiedsverfahren: elf Rechtsgebiete, betreut von spezialisierten Anwältinnen und Anwälten.</p>
+  <section id="dienstleistungen" class="has-banner">
+    <div class="banner">
+      <div class="wrap">
+        <span class="eyebrow">Dienstleistungen</span>
+        <h2>Unsere Dienstleistungen</h2>
       </div>
+    </div>
+    <div class="wrap">
       <div class="areas">
-        <article><span class="icon" style="--i:url(images/icons/arbeitsrecht.svg)" aria-hidden="true"></span><h3>Arbeitsrecht und Sozialversicherungen</h3><p>Individual- und kollektives Arbeitsrecht für Unternehmen und Privatpersonen, vom Arbeitsvertrag bis zum Aufhebungsvertrag, inklusive Konfliktmanagement und Konkurrenzverboten.</p></article>
-        <article><span class="icon" style="--i:url(images/icons/familienrecht.svg)" aria-hidden="true"></span><h3>Familienrecht</h3><p>Eheverträge, Trennung und Scheidung mit allen Fragen zu Unterhalt, Sorgerecht, Vorsorgeausgleich und güterrechtlicher Auseinandersetzung.</p></article>
-        <article><span class="icon" style="--i:url(images/icons/erbrecht.svg)" aria-hidden="true"></span><h3>Erbrecht, Sachenrecht</h3><p>Nachlassplanung für Privatpersonen und Familienunternehmen, Willensvollstreckung, erbrechtliche Klagen sowie Immobilienkaufverträge und dingliche Rechte.</p></article>
-        <article><span class="icon" style="--i:url(images/icons/vertragsrecht.svg)" aria-hidden="true"></span><h3>Vertragsrecht</h3><p>Redaktion und Verhandlung von Verträgen aus allen Bereichen des Obligationenrechts, auch mit internationalem Bezug.</p></article>
-        <article><span class="icon" style="--i:url(images/icons/gesellschaftsrecht.svg)" aria-hidden="true"></span><h3>Gesellschaftsrecht</h3><p>Gründung, Umwandlung und Strukturierung von Gesellschaften, Fusionen, Unternehmenskäufe, MBO, Organisationsreglemente und Aktionärbindungsverträge.</p></article>
-        <article><span class="icon" style="--i:url(images/icons/strafrecht.svg)" aria-hidden="true"></span><h3>Strafrecht</h3><p>Verteidigung in Strafuntersuchungen und vor Strafgerichten aller Instanzen, Opfervertretung, Strassenverkehrsrecht und Unterstützung von Unternehmen.</p></article>
-        <article><span class="icon" style="--i:url(images/icons/steuerrecht.svg)" aria-hidden="true"></span><h3>Steuerrecht</h3><p>Gewinn-, Quellen-, Mehrwert-, Einkommens- und Grundstückgewinnsteuern, Vorbescheide, Steuerverfahren und Steueroptimierung.</p></article>
-        <article><span class="icon" style="--i:url(images/icons/notariat.svg)" aria-hidden="true"></span><h3>Notariat</h3><p>Urkundspersonen der Kantone Schwyz und Zug für gesellschaftsrechtliche Vorgänge sowie ehe- und erbrechtliche Verträge.</p></article>
-        <article><span class="icon" style="--i:url(images/icons/zivilprozess.svg)" aria-hidden="true"></span><h3>Zivilprozess</h3><p>Vertretung vor Zivil- und Verwaltungsgerichten, Vollstreckungs- und Massnahmeverfahren sowie internationale Rechtshilfe.</p></article>
-        <article><span class="icon" style="--i:url(images/icons/schuldbetreuung.svg)" aria-hidden="true"></span><h3>Schuldbetreibung und Konkurs</h3><p>Sicherung und Durchsetzung von Forderungen, Arrestverfahren, Betreibungen mit Auslandsberührung und Anfechtungsklagen.</p></article>
-        <article><span class="icon" style="--i:url(images/icons/schiedsverfahren.svg)" aria-hidden="true"></span><h3>Schiedsverfahren</h3><p>Beratung und Vertretung in ad-hoc- und institutionellen Schiedsverfahren (ICC, Schweizer Handelskammern) sowie Tätigkeit als Schiedsrichter.</p></article>
-        <article class="more"><h3>Ihr Anliegen ist nicht dabei?</h3><p>Sprechen Sie uns an. Wir klären gerne, wer in unserem Team Ihnen am besten weiterhelfen kann.</p><a href="#kontakt">Kontakt aufnehmen →</a></article>
+        <article><h3>Arbeitsrecht und Sozialversicherungen</h3><p>Individual- und kollektives Arbeitsrecht für Unternehmen und Privatpersonen, vom Arbeitsvertrag bis zum Aufhebungsvertrag, inklusive Konfliktmanagement und Konkurrenzverboten.</p></article>
+        <article><h3>Familienrecht</h3><p>Eheverträge, Trennung und Scheidung mit allen Fragen zu Unterhalt, Sorgerecht, Vorsorgeausgleich und güterrechtlicher Auseinandersetzung.</p></article>
+        <article><h3>Erbrecht, Sachenrecht</h3><p>Nachlassplanung für Privatpersonen und Familienunternehmen, Willensvollstreckung, erbrechtliche Klagen sowie Immobilienkaufverträge und dingliche Rechte.</p></article>
+        <article><h3>Vertragsrecht</h3><p>Redaktion und Verhandlung von Verträgen aus allen Bereichen des Obligationenrechts, auch mit internationalem Bezug.</p></article>
+        <article><h3>Gesellschaftsrecht</h3><p>Gründung, Umwandlung und Strukturierung von Gesellschaften, Fusionen, Unternehmenskäufe, MBO, Organisationsreglemente und Aktionärbindungsverträge.</p></article>
+        <article><h3>Strafrecht</h3><p>Verteidigung in Strafuntersuchungen und vor Strafgerichten aller Instanzen, Opfervertretung, Strassenverkehrsrecht und Unterstützung von Unternehmen.</p></article>
+        <article><h3>Steuerrecht</h3><p>Gewinn-, Quellen-, Mehrwert-, Einkommens- und Grundstückgewinnsteuern, Vorbescheide, Steuerverfahren und Steueroptimierung.</p></article>
+        <article><h3>Notariat</h3><p>Urkundspersonen der Kantone Schwyz und Zug für gesellschaftsrechtliche Vorgänge sowie ehe- und erbrechtliche Verträge.</p></article>
+        <article><h3>Zivilprozess</h3><p>Vertretung vor Zivil- und Verwaltungsgerichten, Vollstreckungs- und Massnahmeverfahren sowie internationale Rechtshilfe.</p></article>
+        <article><h3>Schuldbetreibung und Konkurs</h3><p>Sicherung und Durchsetzung von Forderungen, Arrestverfahren, Betreibungen mit Auslandsberührung und Anfechtungsklagen.</p></article>
+        <article><h3>Schiedsverfahren</h3><p>Beratung und Vertretung in ad-hoc- und institutionellen Schiedsverfahren (ICC, Schweizer Handelskammern) sowie Tätigkeit als Schiedsrichter.</p></article>
       </div>
     </div>
   </section>
 
-  <section id="beurkundungen">
-    <div class="wrap split">
-      <div class="split-head">
+  <section id="beurkundungen" class="alt">
+    <div class="wrap notary">
+      <div class="head">
         <span class="eyebrow">Notariat</span>
         <h2>Gründungen und Beurkundungen</h2>
-        <p class="lede">Von der ersten rechtlichen Beratung bis zur finalen Beurkundung begleiten wir Sie durch den gesamten Prozess, ob GmbH, AG, Stiftung oder eine andere Rechtsform.</p>
-        <img class="notary-photo" src="images/beurkundungen.jpg" alt="Unterzeichnung eines Dokuments" width="1400" height="934" loading="lazy">
+        <div class="prose">
+          <p>Wir unterstützen Sie kompetent und unkompliziert bei der Gründung von Gesellschaften sowie bei sämtlichen notariellen Beurkundungen, von der ersten rechtlichen Beratung bis zur finalen Beurkundung.</p>
+          <p>Ob GmbH, AG, Stiftung oder eine andere Rechtsform: Wir setzen Ihre Gründung effizient, rechtssicher und auf Ihre Bedürfnisse zugeschnitten um.</p>
+        </div>
+        <figure class="photo"><img src="images/beurkundungen.jpg" alt="Unterzeichnung eines Dokuments" width="1400" height="934" loading="lazy"></figure>
       </div>
-      <div class="groups">
-        <div class="group">
-          <h3>Gesellschaftsrecht und Unternehmensgründung</h3>
-          <ul>
-            <li>Gründung von AG, GmbH, Genossenschaften und Stiftungen</li>
-            <li>Statutenänderungen: Firmaänderung, Sitzverlegung, Zweckänderung</li>
-            <li>Kapitalerhöhungen und Übertragung von Aktien oder Stammanteilen</li>
-            <li>Umwandlungen, Vermögensübertragungen und Liquidationen</li>
-          </ul>
-        </div>
-        <div class="group">
-          <h3>Ehe- und Erbrecht</h3>
-          <ul>
-            <li>Erstellung und Beurkundung von Eheverträgen</li>
-            <li>Erbverträge, auf Wunsch kombiniert mit Eheverträgen</li>
-            <li>Testamente (letztwillige Verfügungen)</li>
-            <li>Vorsorgeaufträge und Patientenverfügungen</li>
-          </ul>
-        </div>
-        <div class="group">
-          <h3>Weitere notarielle Dienstleistungen</h3>
-          <ul>
-            <li>Bürgschaftserklärungen</li>
-            <li>Beglaubigungen von Unterschriften und Kopien</li>
-          </ul>
-        </div>
-        <div class="notary-cta">
-          <p>Unsere Urkundspersonen: Werner Räber (Kanton Schwyz), Sandra M. Kammerbauer, Joël E. Brochon und Alessandro L. Gerlach (Kanton Zug).</p>
-          <a class="btn btn-navy" href="#kontakt">Termin vereinbaren</a>
-        </div>
-      </div>
+      <ul class="checklist">
+        <li><span>Gründung von AG, GmbH, Genossenschaften und Stiftungen</span><span>Gesellschaftsrecht</span></li>
+        <li><span>Statutenänderungen: Firma, Sitz, Zweck</span><span>Gesellschaftsrecht</span></li>
+        <li><span>Kapitalerhöhungen, Übertragung von Aktien und Stammanteilen</span><span>Gesellschaftsrecht</span></li>
+        <li><span>Umwandlungen, Vermögensübertragungen, Liquidationen</span><span>Gesellschaftsrecht</span></li>
+        <li><span>Eheverträge und Erbverträge</span><span>Ehe- und Erbrecht</span></li>
+        <li><span>Testamente, Vorsorgeaufträge, Patientenverfügungen</span><span>Ehe- und Erbrecht</span></li>
+        <li><span>Bürgschaftserklärungen</span><span>Weitere Leistungen</span></li>
+        <li><span>Beglaubigungen von Unterschriften und Kopien</span><span>Weitere Leistungen</span></li>
+      </ul>
     </div>
   </section>
 
-  <section id="team" class="team-section">
-    <div class="wrap">
-      <div class="section-head">
+  <section id="team" class="has-banner">
+    <div class="banner banner-team">
+      <div class="wrap">
         <span class="eyebrow">Team</span>
-        <h2>Die Menschen hinter der Kanzlei</h2>
+        <h2>Unser Team</h2>
       </div>
-      <h3 class="team-label">Partnerinnen und Partner</h3>
-      <div class="team team-partners">
-        <article class="person"><div class="portrait"><img src="images/team/zanetti.jpg" alt="Gianni F. Zanetti" loading="lazy"></div><span class="role">Managing Partner</span><h3>Gianni F. Zanetti</h3><span class="focus">lic. iur., Rechtsanwalt, Fachanwalt SAV Arbeitsrecht, CAS Finanz- und Rechnungswesen für Juristen, CAS Prozessführung – Civil Litigation</span></article>
-        <article class="person"><div class="portrait"><img src="images/team/kammerbauer.jpg" alt="Sandra M. Kammerbauer" loading="lazy"></div><span class="role">Partnerin</span><h3>Sandra M. Kammerbauer</h3><span class="focus">MLaw, Rechtsanwältin und Urkundsperson des Kantons Zug, Fachanwältin SAV Arbeitsrecht</span></article>
-        <article class="person"><div class="portrait"><img src="images/team/locher.jpg" alt="Thomas Locher" loading="lazy"></div><span class="role">Partner</span><h3>Thomas Locher</h3><span class="focus">lic. iur., Rechtsanwalt, CAS IRP-HSG Versicherungs- und Haftpflichtrecht, Sozialversicherungs-Fachmann mit eidg. Fachausweis</span></article>
-        <article class="person"><div class="portrait"><img src="images/team/brochon.jpg" alt="Joël E. Brochon" loading="lazy"></div><span class="role">Partner</span><h3>Joël E. Brochon</h3><span class="focus">MLaw, Rechtsanwalt und Urkundsperson des Kantons Zug</span></article>
-      </div>
-      <h3 class="team-label">Anwältinnen, Anwälte und Mitarbeitende</h3>
-      <div class="team team-staff">
-        <article class="person"><div class="portrait"><img src="images/team/schuler-villiger.jpg" alt="Claudia Schuler-Villiger" loading="lazy"></div><span class="role">Rechtsanwältin</span><h3>Claudia Schuler-Villiger</h3><span class="focus">MLaw</span></article>
-        <article class="person"><div class="portrait"><img src="images/team/gerlach.jpg" alt="Alessandro L. Gerlach" loading="lazy"></div><span class="role">Rechtsanwalt</span><h3>Alessandro L. Gerlach</h3><span class="focus">MLaw, Urkundsperson des Kantons Zug</span></article>
-        <article class="person"><div class="portrait"><img src="images/team/zaugg.jpg" alt="Gregor A. Zaugg" loading="lazy"></div><span class="role">Rechtsanwalt</span><h3>Gregor A. Zaugg</h3><span class="focus">MLaw</span></article>
-        <article class="person"><div class="portrait"><img src="images/team/surer.jpg" alt="Lara Surer" loading="lazy"></div><span class="role">Rechtsanwältin</span><h3>Lara Surer</h3><span class="focus">MLaw, Urkundsperson des Kantons Zug</span></article>
-        <article class="person"><div class="portrait"><img src="images/team/ziegler.jpg" alt="Zacharias Ziegler" loading="lazy"></div><span class="role">Rechtsanwalt</span><h3>Zacharias Ziegler</h3><span class="focus">MLaw, Fachanwalt SAV Familienrecht, CAS Familienrecht</span></article>
-        <article class="person"><div class="portrait"><img src="images/team/isenegger.jpg" alt="Daniel Isenegger" loading="lazy"></div><span class="role">Treuhand</span><h3>Daniel Isenegger</h3><span class="focus">Treuhänder mit eidg. Fachausweis, dipl. Treuhandexperte</span></article>
-        <article class="person"><div class="portrait"><img src="images/team/gottraux.jpg" alt="Camille Gottraux" loading="lazy"></div><span class="role">Juristische Mitarbeiterin</span><h3>Camille Gottraux</h3><span class="focus">MLaw</span></article>
-        <article class="person"><div class="portrait"><img src="images/team/naepflin.jpg" alt="Marco Näpflin" loading="lazy"></div><span class="role">Juristischer Mitarbeiter</span><h3>Marco Näpflin</h3></article>
-        <article class="person"><div class="portrait"><img src="images/team/suter.jpg" alt="Vera Suter" loading="lazy"></div><span class="role">Office Managerin</span><h3>Vera Suter</h3></article>
-        <article class="person"><div class="portrait"><img src="images/team/kuci.jpg" alt="Delvina Kuci" loading="lazy"></div><span class="role">Rechtsanwalts- und Notariatsassistentin</span><h3>Delvina Kuci</h3></article>
-        <article class="person"><div class="portrait"><img src="images/team/gaudio.jpg" alt="Ramona Gaudio" loading="lazy"></div><span class="role">Buchhaltung und Personalwesen</span><h3>Ramona Gaudio</h3></article>
+    </div>
+    <div class="wrap">
+      <div class="team">
+        <article class="person"><div class="portrait"><img src="images/team/zanetti.jpg" alt="Gianni F. Zanetti" loading="lazy"></div><h3>Gianni F. Zanetti</h3><span class="role">Managing Partner</span><span class="focus">lic. iur., Rechtsanwalt, Fachanwalt SAV Arbeitsrecht, CAS Finanz- und Rechnungswesen für Juristen, CAS Prozessführung – Civil Litigation</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/kammerbauer.jpg" alt="Sandra M. Kammerbauer" loading="lazy"></div><h3>Sandra M. Kammerbauer</h3><span class="role">Partnerin</span><span class="focus">MLaw, Rechtsanwältin und Urkundsperson des Kantons Zug, Fachanwältin SAV Arbeitsrecht</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/locher.jpg" alt="Thomas Locher" loading="lazy"></div><h3>Thomas Locher</h3><span class="role">Partner</span><span class="focus">lic. iur., Rechtsanwalt, CAS IRP-HSG Versicherungs- und Haftpflichtrecht, Sozialversicherungs-Fachmann mit eidg. Fachausweis</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/brochon.jpg" alt="Joël E. Brochon" loading="lazy"></div><h3>Joël E. Brochon</h3><span class="role">Partner</span><span class="focus">MLaw, Rechtsanwalt und Urkundsperson des Kantons Zug</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/schuler-villiger.jpg" alt="Claudia Schuler-Villiger" loading="lazy"></div><h3>Claudia Schuler-Villiger</h3><span class="role">Rechtsanwältin</span><span class="focus">MLaw</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/gerlach.jpg" alt="Alessandro L. Gerlach" loading="lazy"></div><h3>Alessandro L. Gerlach</h3><span class="role">Rechtsanwalt</span><span class="focus">MLaw, Urkundsperson des Kantons Zug</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/zaugg.jpg" alt="Gregor A. Zaugg" loading="lazy"></div><h3>Gregor A. Zaugg</h3><span class="role">Rechtsanwalt</span><span class="focus">MLaw</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/surer.jpg" alt="Lara Surer" loading="lazy"></div><h3>Lara Surer</h3><span class="role">Rechtsanwältin</span><span class="focus">MLaw, Urkundsperson des Kantons Zug</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/ziegler.jpg" alt="Zacharias Ziegler" loading="lazy"></div><h3>Zacharias Ziegler</h3><span class="role">Rechtsanwalt</span><span class="focus">MLaw, Fachanwalt SAV Familienrecht, CAS Familienrecht</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/isenegger.jpg" alt="Daniel Isenegger" loading="lazy"></div><h3>Daniel Isenegger</h3><span class="role">Treuhand</span><span class="focus">Treuhänder mit eidg. Fachausweis, dipl. Treuhandexperte</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/gottraux.jpg" alt="Camille Gottraux" loading="lazy"></div><h3>Camille Gottraux</h3><span class="role">Juristische Mitarbeiterin</span><span class="focus">MLaw</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/naepflin.jpg" alt="Marco Näpflin" loading="lazy"></div><h3>Marco Näpflin</h3><span class="role">Juristischer Mitarbeiter</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/suter.jpg" alt="Vera Suter" loading="lazy"></div><h3>Vera Suter</h3><span class="role">Office Managerin</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/kuci.jpg" alt="Delvina Kuci" loading="lazy"></div><h3>Delvina Kuci</h3><span class="role">Rechtsanwalts- und Notariatsassistentin</span></article>
+        <article class="person"><div class="portrait"><img src="images/team/gaudio.jpg" alt="Ramona Gaudio" loading="lazy"></div><h3>Ramona Gaudio</h3><span class="role">Buchhaltung und Personalwesen</span></article>
       </div>
     </div>
   </section>
 
   <section id="publikationen">
-    <div class="wrap split">
-      <div class="split-head">
+    <div class="wrap">
+      <div class="head">
         <span class="eyebrow">Publikationen</span>
-        <h2>Ausgewählte Beiträge</h2>
-        <p class="lede">Fachbeiträge unserer Anwältinnen und Anwälte, vor allem zu Arbeits- und Mietrecht.</p>
+        <h2>Ausgewählte Publikationen</h2>
       </div>
-      <div>
-        <ul class="pubs">
-          <li><span class="year">2025</span><span><span class="title">Sanierungskündigung und Auszugsgarantie</span><span class="src">Mietrechtspraxis (mp 3/2025) · Gianni F. Zanetti, Alessandro L. Gerlach</span></span></li>
-          <li><span class="year">2024</span><span><span class="title">Das arbeitsrechtliche Konkurrenzverbot – mit Fokus auf die persönlichen Eigenschaften des Arbeitnehmers</span><span class="src">Anwaltsrevue 1/2024 · Gianni F. Zanetti, Sandra M. Kammerbauer</span></span></li>
-          <li><span class="year">2022</span><span><span class="title">Qualifikation des «Bonus»: Lohn oder Gratifikation?</span><span class="src">Digitaler Rechtsprechungs-Kommentar (dRSK), Ausgabe 131 · Gianni F. Zanetti, Sandra M. Kammerbauer</span></span></li>
-          <li><span class="year">2017</span><span><span class="title">Reziproke Zugeständnisse bei Aufhebungsverträgen (BGer 4A_673/2016)</span><span class="src">Digitaler Rechtsprechungs-Kommentar (dRSK), Ausgabe 78 · Gianni F. Zanetti, Sandra M. Kammerbauer</span></span></li>
-          <li><span class="year">2015</span><span><span class="title">Das arbeitsrechtliche Konkurrenzverbot</span><span class="src">Zuger Steuer Praxis Nr. 59 · Gianni F. Zanetti</span></span></li>
-          <li><span class="year">2012</span><span><span class="title">Der arbeitsrechtliche Aufhebungsvertrag</span><span class="src">Anwaltsrevue 2/2012 · Gianni F. Zanetti</span></span></li>
-          <li><span class="year">2011</span><span><span class="title">Ausgewählte Aspekte der Rohbaumiete</span><span class="src">Mietrechtspraxis (mp 2/2011) · Gianni F. Zanetti</span></span></li>
-          <li><span class="year">2010</span><span><span class="title">Arbeitsverhältnisse im internationalen Kontext</span><span class="src">Zuger Steuer Praxis Nr. 45 · Gianni F. Zanetti</span></span></li>
-        </ul>
-        <div class="members" aria-label="Mitgliedschaften">
-          <a href="https://www.legalnetlink.net">Legal Netlink Alliance</a>
-          <a href="https://www.advokaten-zug.ch">Advokatenverein des Kantons Zug</a>
-          <a href="https://www.sav-fsa.ch">Schweizerischer Anwaltsverband</a>
-          <a href="https://www.zav.ch">Zürcher Anwaltsverband</a>
-        </div>
+      <ul class="pubs">
+        <li><span class="year">2025</span><span>Sanierungskündigung und Auszugsgarantie<span class="src">Mietrechtspraxis (mp 3/2025) · Gianni F. Zanetti, Alessandro L. Gerlach</span></span></li>
+        <li><span class="year">2024</span><span>Das arbeitsrechtliche Konkurrenzverbot – mit Fokus auf die persönlichen Eigenschaften des Arbeitnehmers<span class="src">Anwaltsrevue 1/2024 · Gianni F. Zanetti, Sandra M. Kammerbauer</span></span></li>
+        <li><span class="year">2022</span><span>Qualifikation des «Bonus»: Lohn oder Gratifikation?<span class="src">Digitaler Rechtsprechungs-Kommentar (dRSK), Ausgabe 131 · Gianni F. Zanetti, Sandra M. Kammerbauer</span></span></li>
+        <li><span class="year">2017</span><span>Reziproke Zugeständnisse bei Aufhebungsverträgen (BGer 4A_673/2016)<span class="src">Digitaler Rechtsprechungs-Kommentar (dRSK), Ausgabe 78 · Gianni F. Zanetti, Sandra M. Kammerbauer</span></span></li>
+        <li><span class="year">2015</span><span>Das arbeitsrechtliche Konkurrenzverbot<span class="src">Zuger Steuer Praxis Nr. 59 · Gianni F. Zanetti</span></span></li>
+        <li><span class="year">2012</span><span>Der arbeitsrechtliche Aufhebungsvertrag<span class="src">Anwaltsrevue 2/2012 · Gianni F. Zanetti</span></span></li>
+        <li><span class="year">2011</span><span>Ausgewählte Aspekte der Rohbaumiete<span class="src">Mietrechtspraxis (mp 2/2011) · Gianni F. Zanetti</span></span></li>
+        <li><span class="year">2010</span><span>Arbeitsverhältnisse im internationalen Kontext<span class="src">Zuger Steuer Praxis Nr. 45 · Gianni F. Zanetti</span></span></li>
+      </ul>
+      <div class="head" style="margin-top:56px;margin-bottom:20px">
+        <span class="eyebrow">Mitgliedschaften</span>
+      </div>
+      <div class="members">
+        <a href="https://www.legalnetlink.net">Legal Netlink Alliance</a>
+        <a href="https://www.advokaten-zug.ch">Advokatenverein des Kantons Zug</a>
+        <a href="https://www.sav-fsa.ch">Schweizerischer Anwaltsverband</a>
+        <a href="https://www.zav.ch">Zürcher Anwaltsverband</a>
       </div>
     </div>
   </section>
 
   <section id="kontakt" class="contact">
     <div class="wrap">
-      <div class="contact-top">
-        <div>
-          <span class="eyebrow">Kontakt</span>
-          <h2>Wir sind für Sie da.</h2>
-        </div>
-        <div class="phone">
-          <a class="phone-big" href="tel:+41417663585">+41 41 766 35 85</a>
-          <p class="phone-sub">Fax +41 41 766 35 80 · für alle drei Standorte</p>
-        </div>
+      <div class="head">
+        <span class="eyebrow">Kontakt</span>
+        <h2>Unsere Standorte</h2>
       </div>
-      <div class="offices">
-        <div class="office"><span class="tag">Head Office</span><h3>Zug</h3><p>Zanetti Rechtsanwälte AG<br>Blegistrasse 9<br>6340 Baar</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Blegistrasse+9+6340+Baar">Route planen →</a></div>
-        <div class="office"><span class="tag">Office</span><h3>Zürich</h3><p>Zanetti Rechtsanwälte AG<br>Allmendstrasse 2<br>8105 Regensdorf</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Allmendstrasse+2+8105+Regensdorf">Route planen →</a></div>
-        <div class="office"><span class="tag">Office</span><h3>Schwyz</h3><p>Zanetti Rechtsanwälte AG<br>Dorfplatz 2b<br>6405 Immensee</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Dorfplatz+2b+6405+Immensee">Route planen →</a></div>
+      <div class="contact-grid">
+        <div><h3>Head Office Zug</h3><p>Zanetti Rechtsanwälte AG<br>Blegistrasse 9<br>6340 Baar</p></div>
+        <div><h3>Office Zürich</h3><p>Zanetti Rechtsanwälte AG<br>Allmendstrasse 2<br>8105 Regensdorf</p></div>
+        <div><h3>Office Schwyz</h3><p>Zanetti Rechtsanwälte AG<br>Dorfplatz 2b<br>6405 Immensee</p></div>
+        <div><h3>Telefon</h3><p>T <a href="tel:+41417663585">+41 41 766 35 85</a><br>F +41 41 766 35 80</p></div>
       </div>
     </div>
   </section>
@@ -481,7 +449,7 @@ section { padding-block: clamp(72px, 10vw, 128px); }
     btn.textContent = open ? 'Schliessen' : 'Menü';
   });
   nav.addEventListener('click', function (e) {
-    if (e.target.tagName === 'A' && window.innerWidth <= 1000) {
+    if (e.target.tagName === 'A' && window.innerWidth <= 900) {
       nav.hidden = true; btn.setAttribute('aria-expanded', 'false'); btn.textContent = 'Menü';
     }
   });
